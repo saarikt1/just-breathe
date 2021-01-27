@@ -10,7 +10,6 @@
 		34CC3C3D25C167C100A0B8D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */; };
 		34CC3C3F25C167C100A0B8D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C3E25C167C100A0B8D9 /* SceneDelegate.swift */; };
 		34CC3C4125C167C100A0B8D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C4025C167C100A0B8D9 /* ViewController.swift */; };
-		34CC3C4425C167C100A0B8D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CC3C4225C167C100A0B8D9 /* Main.storyboard */; };
 		34CC3C4625C167C200A0B8D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CC3C4525C167C200A0B8D9 /* Assets.xcassets */; };
 		34CC3C4925C167C200A0B8D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CC3C4725C167C200A0B8D9 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -20,7 +19,6 @@
 		34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34CC3C3E25C167C100A0B8D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		34CC3C4025C167C100A0B8D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		34CC3C4325C167C100A0B8D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		34CC3C4525C167C200A0B8D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34CC3C4825C167C200A0B8D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34CC3C4A25C167C200A0B8D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,7 +57,6 @@
 				34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */,
 				34CC3C3E25C167C100A0B8D9 /* SceneDelegate.swift */,
 				34CC3C4025C167C100A0B8D9 /* ViewController.swift */,
-				34CC3C4225C167C100A0B8D9 /* Main.storyboard */,
 				34CC3C4525C167C200A0B8D9 /* Assets.xcassets */,
 				34CC3C4725C167C200A0B8D9 /* LaunchScreen.storyboard */,
 				34CC3C4A25C167C200A0B8D9 /* Info.plist */,
@@ -126,7 +123,6 @@
 			files = (
 				34CC3C4925C167C200A0B8D9 /* LaunchScreen.storyboard in Resources */,
 				34CC3C4625C167C200A0B8D9 /* Assets.xcassets in Resources */,
-				34CC3C4425C167C100A0B8D9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,14 +142,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		34CC3C4225C167C100A0B8D9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				34CC3C4325C167C100A0B8D9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		34CC3C4725C167C200A0B8D9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,6 +277,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3HTJLKJT8Q;
 				INFOPLIST_FILE = JustBreathe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,7 +285,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommisaarikangas.JustBreathe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,6 +297,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3HTJLKJT8Q;
 				INFOPLIST_FILE = JustBreathe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +305,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommisaarikangas.JustBreathe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
