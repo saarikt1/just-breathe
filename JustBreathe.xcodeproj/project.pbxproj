@@ -12,6 +12,7 @@
 		34CC3C4125C167C100A0B8D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C4025C167C100A0B8D9 /* ViewController.swift */; };
 		34CC3C4625C167C200A0B8D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CC3C4525C167C200A0B8D9 /* Assets.xcassets */; };
 		34CC3C4925C167C200A0B8D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CC3C4725C167C200A0B8D9 /* LaunchScreen.storyboard */; };
+		C9D5F768BE276664A5438099 /* Pods_JustBreathe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A7E648A3FCD1AB32E72CEB /* Pods_JustBreathe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		34CC3C4525C167C200A0B8D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34CC3C4825C167C200A0B8D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34CC3C4A25C167C200A0B8D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6C1B67F496A7C91E640C5E1A /* Pods-JustBreathe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustBreathe.debug.xcconfig"; path = "Target Support Files/Pods-JustBreathe/Pods-JustBreathe.debug.xcconfig"; sourceTree = "<group>"; };
+		D3A7E648A3FCD1AB32E72CEB /* Pods_JustBreathe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustBreathe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5A76AF782A92320988FCB2D /* Pods-JustBreathe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustBreathe.release.xcconfig"; path = "Target Support Files/Pods-JustBreathe/Pods-JustBreathe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9D5F768BE276664A5438099 /* Pods_JustBreathe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E6F1BACA3E722698DC8AE12 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6C1B67F496A7C91E640C5E1A /* Pods-JustBreathe.debug.xcconfig */,
+				F5A76AF782A92320988FCB2D /* Pods-JustBreathe.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		34CC3C3025C167C100A0B8D9 = {
 			isa = PBXGroup;
 			children = (
 				34CC3C3B25C167C100A0B8D9 /* JustBreathe */,
 				34CC3C3A25C167C100A0B8D9 /* Products */,
+				0E6F1BACA3E722698DC8AE12 /* Pods */,
+				7FC0AB3A9FF9B04B816A7C83 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +81,14 @@
 			path = JustBreathe;
 			sourceTree = "<group>";
 		};
+		7FC0AB3A9FF9B04B816A7C83 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3A7E648A3FCD1AB32E72CEB /* Pods_JustBreathe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +96,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 34CC3C4D25C167C200A0B8D9 /* Build configuration list for PBXNativeTarget "JustBreathe" */;
 			buildPhases = (
+				903314859156627BB0C472DF /* [CP] Check Pods Manifest.lock */,
 				34CC3C3525C167C100A0B8D9 /* Sources */,
 				34CC3C3625C167C100A0B8D9 /* Frameworks */,
 				34CC3C3725C167C100A0B8D9 /* Resources */,
+				C61A3DB77B3E4631B8DAD27A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,6 +154,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		903314859156627BB0C472DF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JustBreathe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C61A3DB77B3E4631B8DAD27A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JustBreathe/Pods-JustBreathe-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JustBreathe/Pods-JustBreathe-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JustBreathe/Pods-JustBreathe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		34CC3C3525C167C100A0B8D9 /* Sources */ = {
@@ -271,6 +340,7 @@
 		};
 		34CC3C4E25C167C200A0B8D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C1B67F496A7C91E640C5E1A /* Pods-JustBreathe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -291,6 +361,7 @@
 		};
 		34CC3C4F25C167C200A0B8D9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5A76AF782A92320988FCB2D /* Pods-JustBreathe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
