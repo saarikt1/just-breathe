@@ -3,26 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		34CC3C3D25C167C100A0B8D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */; };
-		34CC3C3F25C167C100A0B8D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C3E25C167C100A0B8D9 /* SceneDelegate.swift */; };
-		34CC3C4125C167C100A0B8D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C4025C167C100A0B8D9 /* ViewController.swift */; };
+		34CC3C4125C167C100A0B8D9 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */; };
 		34CC3C4625C167C200A0B8D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CC3C4525C167C200A0B8D9 /* Assets.xcassets */; };
 		34CC3C4925C167C200A0B8D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CC3C4725C167C200A0B8D9 /* LaunchScreen.storyboard */; };
+		34CC3C6525C2B2BB00A0B8D9 /* PresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C6425C2B2BB00A0B8D9 /* PresetsViewController.swift */; };
+		34CC3C6825C2B31500A0B8D9 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C6725C2B31500A0B8D9 /* LogViewController.swift */; };
+		34CC3C6B25C2B34800A0B8D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */; };
 		C9D5F768BE276664A5438099 /* Pods_JustBreathe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A7E648A3FCD1AB32E72CEB /* Pods_JustBreathe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		34CC3C3925C167C100A0B8D9 /* JustBreathe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustBreathe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		34CC3C3E25C167C100A0B8D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		34CC3C4025C167C100A0B8D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		34CC3C4525C167C200A0B8D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34CC3C4825C167C200A0B8D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34CC3C4A25C167C200A0B8D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34CC3C6425C2B2BB00A0B8D9 /* PresetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsViewController.swift; sourceTree = "<group>"; };
+		34CC3C6725C2B31500A0B8D9 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
+		34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6C1B67F496A7C91E640C5E1A /* Pods-JustBreathe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustBreathe.debug.xcconfig"; path = "Target Support Files/Pods-JustBreathe/Pods-JustBreathe.debug.xcconfig"; sourceTree = "<group>"; };
 		D3A7E648A3FCD1AB32E72CEB /* Pods_JustBreathe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustBreathe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A76AF782A92320988FCB2D /* Pods-JustBreathe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustBreathe.release.xcconfig"; path = "Target Support Files/Pods-JustBreathe/Pods-JustBreathe.release.xcconfig"; sourceTree = "<group>"; };
@@ -46,7 +50,6 @@
 				6C1B67F496A7C91E640C5E1A /* Pods-JustBreathe.debug.xcconfig */,
 				F5A76AF782A92320988FCB2D /* Pods-JustBreathe.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -72,8 +75,10 @@
 			isa = PBXGroup;
 			children = (
 				34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */,
-				34CC3C3E25C167C100A0B8D9 /* SceneDelegate.swift */,
-				34CC3C4025C167C100A0B8D9 /* ViewController.swift */,
+				34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */,
+				34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */,
+				34CC3C6425C2B2BB00A0B8D9 /* PresetsViewController.swift */,
+				34CC3C6725C2B31500A0B8D9 /* LogViewController.swift */,
 				34CC3C4525C167C200A0B8D9 /* Assets.xcassets */,
 				34CC3C4725C167C200A0B8D9 /* LaunchScreen.storyboard */,
 				34CC3C4A25C167C200A0B8D9 /* Info.plist */,
@@ -202,9 +207,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34CC3C4125C167C100A0B8D9 /* ViewController.swift in Sources */,
+				34CC3C4125C167C100A0B8D9 /* StartScreenViewController.swift in Sources */,
 				34CC3C3D25C167C100A0B8D9 /* AppDelegate.swift in Sources */,
-				34CC3C3F25C167C100A0B8D9 /* SceneDelegate.swift in Sources */,
+				34CC3C6525C2B2BB00A0B8D9 /* PresetsViewController.swift in Sources */,
+				34CC3C6B25C2B34800A0B8D9 /* SettingsViewController.swift in Sources */,
+				34CC3C6825C2B31500A0B8D9 /* LogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
