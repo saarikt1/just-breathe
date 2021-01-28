@@ -9,9 +9,24 @@ import UIKit
 import SnapKit
 
 class StartScreenViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.red
+        setBackground()
+    }
+    
+}
+
+extension UIViewController {
+    func setBackground(){
+        let background = UIImage(named: "bg-purple")
+        var imageView : UIImageView!
+        imageView = UIImageView(frame: view.bounds)
+        imageView.contentMode =  UIView.ContentMode.scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.image = background
+        imageView.center = view.center
+        view.addSubview(imageView)
+        self.view.sendSubviewToBack(imageView)
     }
 }

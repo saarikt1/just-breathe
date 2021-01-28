@@ -10,6 +10,6 @@ import UIKit
 class LogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
+        setBackground()
     }
 }

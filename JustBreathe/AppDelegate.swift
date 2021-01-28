@@ -14,20 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        let tabVC = UITabBarController()
-        tabVC.delegate = self
-
-        let startScreenVC = StartScreenViewController()
-        let presetsVC = PresetsViewController()
-        let logVC = LogViewController()
-        let settingsVC = SettingsViewController()
-        
-        startScreenVC.title = "Start Screen"
-        presetsVC.title = "Presets"
-        logVC.title = "Log"
-        settingsVC.title = "Settings"
-        
-        tabVC.setViewControllers([startScreenVC, presetsVC, logVC, settingsVC], animated: false)
+        let tabVC = TabBar()
         window?.rootViewController = tabVC
         window?.makeKeyAndVisible()
         return true

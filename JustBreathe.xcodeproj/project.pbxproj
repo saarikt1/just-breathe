@@ -14,6 +14,7 @@
 		34CC3C6525C2B2BB00A0B8D9 /* PresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C6425C2B2BB00A0B8D9 /* PresetsViewController.swift */; };
 		34CC3C6825C2B31500A0B8D9 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C6725C2B31500A0B8D9 /* LogViewController.swift */; };
 		34CC3C6B25C2B34800A0B8D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */; };
+		34CC3C6E25C2B43000A0B8D9 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C6D25C2B43000A0B8D9 /* TabBar.swift */; };
 		C9D5F768BE276664A5438099 /* Pods_JustBreathe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A7E648A3FCD1AB32E72CEB /* Pods_JustBreathe.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		34CC3C6425C2B2BB00A0B8D9 /* PresetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsViewController.swift; sourceTree = "<group>"; };
 		34CC3C6725C2B31500A0B8D9 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		34CC3C6D25C2B43000A0B8D9 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		6C1B67F496A7C91E640C5E1A /* Pods-JustBreathe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustBreathe.debug.xcconfig"; path = "Target Support Files/Pods-JustBreathe/Pods-JustBreathe.debug.xcconfig"; sourceTree = "<group>"; };
 		D3A7E648A3FCD1AB32E72CEB /* Pods_JustBreathe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustBreathe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A76AF782A92320988FCB2D /* Pods-JustBreathe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustBreathe.release.xcconfig"; path = "Target Support Files/Pods-JustBreathe/Pods-JustBreathe.release.xcconfig"; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */,
+				34CC3C6D25C2B43000A0B8D9 /* TabBar.swift */,
 				34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */,
 				34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */,
 				34CC3C6425C2B2BB00A0B8D9 /* PresetsViewController.swift */,
@@ -210,6 +213,7 @@
 				34CC3C4125C167C100A0B8D9 /* StartScreenViewController.swift in Sources */,
 				34CC3C3D25C167C100A0B8D9 /* AppDelegate.swift in Sources */,
 				34CC3C6525C2B2BB00A0B8D9 /* PresetsViewController.swift in Sources */,
+				34CC3C6E25C2B43000A0B8D9 /* TabBar.swift in Sources */,
 				34CC3C6B25C2B34800A0B8D9 /* SettingsViewController.swift in Sources */,
 				34CC3C6825C2B31500A0B8D9 /* LogViewController.swift in Sources */,
 			);
