@@ -42,17 +42,17 @@ class TabBar: UITabBarController {
         logVC.title = "Log"
         settingsVC.title = "Settings"
         
-        let startScreenIconSelected = #imageLiteral(resourceName: "menuicon-startScreen-selected").withRenderingMode(.alwaysOriginal)
-        let startScreenIconUnselected = #imageLiteral(resourceName: "menuicon-startScreen-unselected").withRenderingMode(.alwaysOriginal)
+        let startScreenIconSelected = R.image.menuiconStartScreenSelected()?.withRenderingMode(.alwaysOriginal)
+        let startScreenIconUnselected = R.image.menuiconStartScreenUnselected()?.withRenderingMode(.alwaysOriginal)
 
-        let presetIconSelected = #imageLiteral(resourceName: "menuicon-presets-selected").withRenderingMode(.alwaysOriginal)
-        let presetIconUnselected = #imageLiteral(resourceName: "menuicon-presets-unselected").withRenderingMode(.alwaysOriginal)
+        let presetIconSelected = R.image.menuiconPresetsSelected()?.withRenderingMode(.alwaysOriginal)
+        let presetIconUnselected = R.image.menuiconPresetsUnselected()?.withRenderingMode(.alwaysOriginal)
         
-        let logIconSelected = #imageLiteral(resourceName: "menuicon-log-selected").withRenderingMode(.alwaysOriginal)
-        let logIconUnselected = #imageLiteral(resourceName: "menuicon-log-unselected").withRenderingMode(.alwaysOriginal)
+        let logIconSelected = R.image.menuiconLogSelected()?.withRenderingMode(.alwaysOriginal)
+        let logIconUnselected = R.image.menuiconLogUnselected()?.withRenderingMode(.alwaysOriginal)
         
-        let settingsIconSelected = #imageLiteral(resourceName: "menuicon-settings-selected").withRenderingMode(.alwaysOriginal)
-        let settingsIconUnselected = #imageLiteral(resourceName: "menuicon-settings-unselected").withRenderingMode(.alwaysOriginal)
+        let settingsIconSelected = R.image.menuiconSettingsSelected()?.withRenderingMode(.alwaysOriginal)
+        let settingsIconUnselected = R.image.menuiconSettingsUnselected()?.withRenderingMode(.alwaysOriginal)
         
         startScreenVC.tabBarItem = UITabBarItem(title: nil, image: startScreenIconUnselected, selectedImage: startScreenIconSelected)
         presetsVC.tabBarItem = UITabBarItem(title: nil, image: presetIconUnselected, selectedImage: presetIconSelected)

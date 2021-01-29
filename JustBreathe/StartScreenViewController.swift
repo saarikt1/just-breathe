@@ -14,11 +14,11 @@ class StartScreenViewController: UIViewController {
         super.viewDidLoad()
         setBackground()
         
-        let image = UIImage(named: "icon-calm")
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFit
-        view.addSubview(imageView)
-        imageView.snp.makeConstraints { make in
+        let img = R.image.iconCalm()
+        let calmImg = UIImageView(image: img)
+        calmImg.contentMode = .scaleAspectFit
+        view.addSubview(calmImg)
+        calmImg.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
         
@@ -27,7 +27,7 @@ class StartScreenViewController: UIViewController {
         title.textColor = .white
         view.addSubview(title)
         title.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(40)
+            make.top.equalTo(calmImg.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
         }
     }
