@@ -5,5 +5,6 @@ target 'JustBreathe' do
 
   # Pods for JustBreathe
   pod 'SnapKit', '~> 5.0.0'
+  pod 'R.swift'
 
 end

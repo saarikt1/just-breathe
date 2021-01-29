@@ -15,6 +15,7 @@
 		34CC3C6825C2B31500A0B8D9 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C6725C2B31500A0B8D9 /* LogViewController.swift */; };
 		34CC3C6B25C2B34800A0B8D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */; };
 		34CC3C6E25C2B43000A0B8D9 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C6D25C2B43000A0B8D9 /* TabBar.swift */; };
+		34CC3C7825C43BF800A0B8D9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C7725C43BF800A0B8D9 /* R.generated.swift */; };
 		C9D5F768BE276664A5438099 /* Pods_JustBreathe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A7E648A3FCD1AB32E72CEB /* Pods_JustBreathe.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		34CC3C6725C2B31500A0B8D9 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		34CC3C6D25C2B43000A0B8D9 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		34CC3C7725C43BF800A0B8D9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		6C1B67F496A7C91E640C5E1A /* Pods-JustBreathe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustBreathe.debug.xcconfig"; path = "Target Support Files/Pods-JustBreathe/Pods-JustBreathe.debug.xcconfig"; sourceTree = "<group>"; };
 		D3A7E648A3FCD1AB32E72CEB /* Pods_JustBreathe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustBreathe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A76AF782A92320988FCB2D /* Pods-JustBreathe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustBreathe.release.xcconfig"; path = "Target Support Files/Pods-JustBreathe/Pods-JustBreathe.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		34CC3C3B25C167C100A0B8D9 /* JustBreathe */ = {
 			isa = PBXGroup;
 			children = (
+				34CC3C7725C43BF800A0B8D9 /* R.generated.swift */,
 				34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */,
 				34CC3C6D25C2B43000A0B8D9 /* TabBar.swift */,
 				34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */,
@@ -105,6 +108,7 @@
 			buildConfigurationList = 34CC3C4D25C167C200A0B8D9 /* Build configuration list for PBXNativeTarget "JustBreathe" */;
 			buildPhases = (
 				903314859156627BB0C472DF /* [CP] Check Pods Manifest.lock */,
+				34CC3C7525C43A4D00A0B8D9 /* ShellScript */,
 				34CC3C3525C167C100A0B8D9 /* Sources */,
 				34CC3C3625C167C100A0B8D9 /* Frameworks */,
 				34CC3C3725C167C100A0B8D9 /* Resources */,
@@ -164,6 +168,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		34CC3C7525C43A4D00A0B8D9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		903314859156627BB0C472DF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -211,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34CC3C4125C167C100A0B8D9 /* StartScreenViewController.swift in Sources */,
+				34CC3C7825C43BF800A0B8D9 /* R.generated.swift in Sources */,
 				34CC3C3D25C167C100A0B8D9 /* AppDelegate.swift in Sources */,
 				34CC3C6525C2B2BB00A0B8D9 /* PresetsViewController.swift in Sources */,
 				34CC3C6E25C2B43000A0B8D9 /* TabBar.swift in Sources */,
