@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		343EC33425C82C1D000874EF /* StartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33325C82C1D000874EF /* StartScreenView.swift */; };
 		34CC3C3D25C167C100A0B8D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */; };
 		34CC3C4125C167C100A0B8D9 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */; };
 		34CC3C4625C167C200A0B8D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CC3C4525C167C200A0B8D9 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		343EC33325C82C1D000874EF /* StartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenView.swift; sourceTree = "<group>"; };
 		34CC3C3925C167C100A0B8D9 /* JustBreathe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustBreathe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */,
 				34CC3C6D25C2B43000A0B8D9 /* RootViewController.swift */,
 				34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */,
+				343EC33325C82C1D000874EF /* StartScreenView.swift */,
 				34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */,
 				34CC3C6425C2B2BB00A0B8D9 /* PresetsViewController.swift */,
 				34CC3C6725C2B31500A0B8D9 /* LogViewController.swift */,
@@ -234,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34CC3C4125C167C100A0B8D9 /* StartScreenViewController.swift in Sources */,
+				343EC33425C82C1D000874EF /* StartScreenView.swift in Sources */,
 				34CC3C7825C43BF800A0B8D9 /* R.generated.swift in Sources */,
 				34CC3C3D25C167C100A0B8D9 /* AppDelegate.swift in Sources */,
 				34CC3C6525C2B2BB00A0B8D9 /* PresetsViewController.swift in Sources */,
