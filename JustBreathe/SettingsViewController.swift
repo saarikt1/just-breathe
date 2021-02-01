@@ -11,5 +11,13 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackground()
+        
+        let settingsView = SettingsView()
+        view.addSubview(settingsView)
+        
+        settingsView.snp.makeConstraints{ make in
+            make.top.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+        }
     }
 }

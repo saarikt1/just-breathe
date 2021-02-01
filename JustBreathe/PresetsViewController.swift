@@ -11,6 +11,14 @@ class PresetsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackground()
+        
+        let presetsView = PresetsView()
+        view.addSubview(presetsView)
+        
+        presetsView.snp.makeConstraints{ make in
+            make.top.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+        }
     }
 }
 

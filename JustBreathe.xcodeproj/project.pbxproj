@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		343EC33425C82C1D000874EF /* StartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33325C82C1D000874EF /* StartScreenView.swift */; };
+		343EC33725C832A9000874EF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33625C832A9000874EF /* SettingsView.swift */; };
+		343EC33B25C833F8000874EF /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33A25C833F8000874EF /* LogView.swift */; };
+		343EC33E25C836AF000874EF /* PresetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33D25C836AF000874EF /* PresetsView.swift */; };
 		34CC3C3D25C167C100A0B8D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */; };
 		34CC3C4125C167C100A0B8D9 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */; };
 		34CC3C4625C167C200A0B8D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CC3C4525C167C200A0B8D9 /* Assets.xcassets */; };
@@ -22,6 +25,9 @@
 
 /* Begin PBXFileReference section */
 		343EC33325C82C1D000874EF /* StartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenView.swift; sourceTree = "<group>"; };
+		343EC33625C832A9000874EF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		343EC33A25C833F8000874EF /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
+		343EC33D25C836AF000874EF /* PresetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsView.swift; sourceTree = "<group>"; };
 		34CC3C3925C167C100A0B8D9 /* JustBreathe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustBreathe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
@@ -85,9 +91,12 @@
 				34CC3C6D25C2B43000A0B8D9 /* RootViewController.swift */,
 				34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */,
 				343EC33325C82C1D000874EF /* StartScreenView.swift */,
-				34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */,
 				34CC3C6425C2B2BB00A0B8D9 /* PresetsViewController.swift */,
+				343EC33D25C836AF000874EF /* PresetsView.swift */,
 				34CC3C6725C2B31500A0B8D9 /* LogViewController.swift */,
+				343EC33A25C833F8000874EF /* LogView.swift */,
+				34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */,
+				343EC33625C832A9000874EF /* SettingsView.swift */,
 				34CC3C4525C167C200A0B8D9 /* Assets.xcassets */,
 				34CC3C4725C167C200A0B8D9 /* LaunchScreen.storyboard */,
 				34CC3C4A25C167C200A0B8D9 /* Info.plist */,
@@ -239,8 +248,11 @@
 				34CC3C4125C167C100A0B8D9 /* StartScreenViewController.swift in Sources */,
 				343EC33425C82C1D000874EF /* StartScreenView.swift in Sources */,
 				34CC3C7825C43BF800A0B8D9 /* R.generated.swift in Sources */,
+				343EC33B25C833F8000874EF /* LogView.swift in Sources */,
+				343EC33725C832A9000874EF /* SettingsView.swift in Sources */,
 				34CC3C3D25C167C100A0B8D9 /* AppDelegate.swift in Sources */,
 				34CC3C6525C2B2BB00A0B8D9 /* PresetsViewController.swift in Sources */,
+				343EC33E25C836AF000874EF /* PresetsView.swift in Sources */,
 				34CC3C6E25C2B43000A0B8D9 /* RootViewController.swift in Sources */,
 				34CC3C6B25C2B34800A0B8D9 /* SettingsViewController.swift in Sources */,
 				34CC3C6825C2B31500A0B8D9 /* LogViewController.swift in Sources */,

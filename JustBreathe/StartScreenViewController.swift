@@ -14,7 +14,7 @@ class StartScreenViewController: UIViewController {
         super.viewDidLoad()
         
         setBackground()
-        let startScreenView = StartScreenview()
+        let startScreenView = StartScreenView()
         view.addSubview(startScreenView)
         
         startScreenView.snp.makeConstraints{ make in

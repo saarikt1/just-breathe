@@ -11,5 +11,13 @@ class LogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackground()
+        
+        let logView = LogView()
+        view.addSubview(logView)
+        
+        logView.snp.makeConstraints{ make in
+            make.top.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+        }
     }
 }
