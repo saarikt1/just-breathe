@@ -16,11 +16,11 @@ class RootViewController: UITabBarController {
     }
     
     func setTabBarStyles() {
-        let transperentBlackColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
+        let transparentBlackColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
 
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
-        transperentBlackColor.setFill()
+        transparentBlackColor.setFill()
         UIRectFill(rect)
 
         if let image = UIGraphicsGetImageFromCurrentImageContext() {
@@ -32,34 +32,32 @@ class RootViewController: UITabBarController {
     }
     
     func setupVCs() {
-        let startScreenVC = StartScreenViewController()
-        let presetsVC = PresetsViewController()
-        let logVC = LogViewController()
-        let settingsVC = SettingsViewController()
-        
-        startScreenVC.title = "Start Screen"
-        presetsVC.title = "Presets"
-        logVC.title = "Log"
-        settingsVC.title = "Settings"
-        
-        let startScreenIconSelected = R.image.menuiconStartScreenSelected()?.withRenderingMode(.alwaysOriginal)
-        let startScreenIconUnselected = R.image.menuiconStartScreenUnselected()?.withRenderingMode(.alwaysOriginal)
+        let startScreenVC = createTabVC(VC: StartScreenViewController(),
+                                        selectedIcon: R.image.menuiconStartScreenSelected()?.withRenderingMode(.alwaysOriginal),
+                                        unSelectedIcon: R.image.menuiconStartScreenUnselected()?.withRenderingMode(.alwaysOriginal))
 
-        let presetIconSelected = R.image.menuiconPresetsSelected()?.withRenderingMode(.alwaysOriginal)
-        let presetIconUnselected = R.image.menuiconPresetsUnselected()?.withRenderingMode(.alwaysOriginal)
+        let presetsVC = createTabVC(VC: PresetsViewController(),
+                                    selectedIcon: R.image.menuiconPresetsSelected()?.withRenderingMode(.alwaysOriginal),
+                                    unSelectedIcon: R.image.menuiconPresetsUnselected()?.withRenderingMode(.alwaysOriginal))
+
+        let logVC = createTabVC(VC: LogViewController(),
+                                selectedIcon: R.image.menuiconLogSelected()?.withRenderingMode(.alwaysOriginal),
+                                unSelectedIcon: R.image.menuiconLogUnselected()?.withRenderingMode(.alwaysOriginal))
         
-        let logIconSelected = R.image.menuiconLogSelected()?.withRenderingMode(.alwaysOriginal)
-        let logIconUnselected = R.image.menuiconLogUnselected()?.withRenderingMode(.alwaysOriginal)
-        
-        let settingsIconSelected = R.image.menuiconSettingsSelected()?.withRenderingMode(.alwaysOriginal)
-        let settingsIconUnselected = R.image.menuiconSettingsUnselected()?.withRenderingMode(.alwaysOriginal)
-        
-        startScreenVC.tabBarItem = UITabBarItem(title: nil, image: startScreenIconUnselected, selectedImage: startScreenIconSelected)
-        presetsVC.tabBarItem = UITabBarItem(title: nil, image: presetIconUnselected, selectedImage: presetIconSelected)
-        logVC.tabBarItem = UITabBarItem(title: nil, image: logIconUnselected, selectedImage: logIconSelected)
-        settingsVC.tabBarItem = UITabBarItem(title: nil, image: settingsIconUnselected, selectedImage: settingsIconSelected)
+        let settingsVC = createTabVC(VC: SettingsViewController(),
+                                     selectedIcon: R.image.menuiconSettingsSelected()?.withRenderingMode(.alwaysOriginal),
+                                     unSelectedIcon: R.image.menuiconSettingsUnselected()?.withRenderingMode(.alwaysOriginal))
         
         setViewControllers([startScreenVC, presetsVC, logVC, settingsVC], animated: false)
-        selectedViewController = startScreenVC
+    }
+    
+    func createTabVC(VC: UIViewController, selectedIcon: UIImage?, unSelectedIcon: UIImage?) -> UINavigationController {
+        let tabVC = UINavigationController(rootViewController: VC)
+        
+        tabVC.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        tabVC.navigationBar.shadowImage = UIImage()
+        tabVC.tabBarItem = UITabBarItem(title: nil, image: unSelectedIcon, selectedImage: selectedIcon)
+        
+        return tabVC
     }
 }
