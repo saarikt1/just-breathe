@@ -24,7 +24,6 @@ class StartScreenViewController: UIViewController {
     }
 }
 
-
 extension UIViewController {
     func setBackground(){
         let background = UIImage(named: "bg-purple")
@@ -38,3 +37,4 @@ extension UIViewController {
         view.sendSubviewToBack(imageView)
     }
 }
+
