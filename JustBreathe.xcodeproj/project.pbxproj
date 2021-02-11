@@ -11,7 +11,10 @@
 		343EC33725C832A9000874EF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33625C832A9000874EF /* SettingsView.swift */; };
 		343EC33B25C833F8000874EF /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33A25C833F8000874EF /* LogView.swift */; };
 		343EC33E25C836AF000874EF /* PresetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33D25C836AF000874EF /* PresetsView.swift */; };
-		34B3BAE125D2978D00E69DCF /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B3BAE025D2978D00E69DCF /* BasicButton.swift */; };
+		34B3BAE125D2978D00E69DCF /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B3BAE025D2978D00E69DCF /* UIButton.swift */; };
+		34B3BAF325D5621500E69DCF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34B3BAF225D5621500E69DCF /* Colors.xcassets */; };
+		34B3BAFE25D56AAD00E69DCF /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B3BAFD25D56AAD00E69DCF /* UIViewController.swift */; };
+		34B3BB0225D56AFA00E69DCF /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B3BB0125D56AFA00E69DCF /* UIImage.swift */; };
 		34CC3C3D25C167C100A0B8D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */; };
 		34CC3C4125C167C100A0B8D9 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */; };
 		34CC3C4625C167C200A0B8D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CC3C4525C167C200A0B8D9 /* Assets.xcassets */; };
@@ -29,18 +32,21 @@
 		343EC33625C832A9000874EF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		343EC33A25C833F8000874EF /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		343EC33D25C836AF000874EF /* PresetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsView.swift; sourceTree = "<group>"; };
-		34B3BAE025D2978D00E69DCF /* BasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
+		34B3BAE025D2978D00E69DCF /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		34B3BAF225D5621500E69DCF /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		34B3BAFD25D56AAD00E69DCF /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		34B3BB0125D56AFA00E69DCF /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		34CC3C3925C167C100A0B8D9 /* JustBreathe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustBreathe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		34CC3C4525C167C200A0B8D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34CC3C4825C167C200A0B8D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		34CC3C4A25C167C200A0B8D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34CC3C4A25C167C200A0B8D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "JustBreathe/Support Files/Info.plist"; sourceTree = SOURCE_ROOT; };
 		34CC3C6425C2B2BB00A0B8D9 /* PresetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsViewController.swift; sourceTree = "<group>"; };
 		34CC3C6725C2B31500A0B8D9 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		34CC3C6D25C2B43000A0B8D9 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		34CC3C7725C43BF800A0B8D9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		34CC3C7725C43BF800A0B8D9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = "JustBreathe/Support Files/R.generated.swift"; sourceTree = SOURCE_ROOT; };
 		6C1B67F496A7C91E640C5E1A /* Pods-JustBreathe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustBreathe.debug.xcconfig"; path = "Target Support Files/Pods-JustBreathe/Pods-JustBreathe.debug.xcconfig"; sourceTree = "<group>"; };
 		D3A7E648A3FCD1AB32E72CEB /* Pods_JustBreathe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustBreathe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A76AF782A92320988FCB2D /* Pods-JustBreathe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustBreathe.release.xcconfig"; path = "Target Support Files/Pods-JustBreathe/Pods-JustBreathe.release.xcconfig"; sourceTree = "<group>"; };
@@ -67,6 +73,52 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		34B3BAF025D561D700E69DCF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */,
+				34CC3C7725C43BF800A0B8D9 /* R.generated.swift */,
+				34CC3C4525C167C200A0B8D9 /* Assets.xcassets */,
+				34CC3C4725C167C200A0B8D9 /* LaunchScreen.storyboard */,
+				34CC3C4A25C167C200A0B8D9 /* Info.plist */,
+				34B3BAF225D5621500E69DCF /* Colors.xcassets */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		34B3BAFC25D56A6C00E69DCF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				34B3BAE025D2978D00E69DCF /* UIButton.swift */,
+				34B3BAFD25D56AAD00E69DCF /* UIViewController.swift */,
+				34B3BB0125D56AFA00E69DCF /* UIImage.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		34B3BB0725D56F1100E69DCF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				34CC3C6D25C2B43000A0B8D9 /* RootViewController.swift */,
+				34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */,
+				34CC3C6425C2B2BB00A0B8D9 /* PresetsViewController.swift */,
+				34CC3C6725C2B31500A0B8D9 /* LogViewController.swift */,
+				34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		34B3BB0A25D56F2200E69DCF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				343EC33325C82C1D000874EF /* StartScreenView.swift */,
+				343EC33D25C836AF000874EF /* PresetsView.swift */,
+				343EC33A25C833F8000874EF /* LogView.swift */,
+				343EC33625C832A9000874EF /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		34CC3C3025C167C100A0B8D9 = {
 			isa = PBXGroup;
 			children = (
@@ -88,21 +140,10 @@
 		34CC3C3B25C167C100A0B8D9 /* JustBreathe */ = {
 			isa = PBXGroup;
 			children = (
-				34CC3C7725C43BF800A0B8D9 /* R.generated.swift */,
-				34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */,
-				34B3BAE025D2978D00E69DCF /* BasicButton.swift */,
-				34CC3C6D25C2B43000A0B8D9 /* RootViewController.swift */,
-				34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */,
-				343EC33325C82C1D000874EF /* StartScreenView.swift */,
-				34CC3C6425C2B2BB00A0B8D9 /* PresetsViewController.swift */,
-				343EC33D25C836AF000874EF /* PresetsView.swift */,
-				34CC3C6725C2B31500A0B8D9 /* LogViewController.swift */,
-				343EC33A25C833F8000874EF /* LogView.swift */,
-				34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */,
-				343EC33625C832A9000874EF /* SettingsView.swift */,
-				34CC3C4525C167C200A0B8D9 /* Assets.xcassets */,
-				34CC3C4725C167C200A0B8D9 /* LaunchScreen.storyboard */,
-				34CC3C4A25C167C200A0B8D9 /* Info.plist */,
+				34B3BB0725D56F1100E69DCF /* Controllers */,
+				34B3BB0A25D56F2200E69DCF /* Views */,
+				34B3BAFC25D56A6C00E69DCF /* Extensions */,
+				34B3BAF025D561D700E69DCF /* Support Files */,
 			);
 			path = JustBreathe;
 			sourceTree = "<group>";
@@ -175,6 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34B3BAF325D5621500E69DCF /* Colors.xcassets in Resources */,
 				34CC3C4925C167C200A0B8D9 /* LaunchScreen.storyboard in Resources */,
 				34CC3C4625C167C200A0B8D9 /* Assets.xcassets in Resources */,
 			);
@@ -254,12 +296,14 @@
 				343EC33B25C833F8000874EF /* LogView.swift in Sources */,
 				343EC33725C832A9000874EF /* SettingsView.swift in Sources */,
 				34CC3C3D25C167C100A0B8D9 /* AppDelegate.swift in Sources */,
-				34B3BAE125D2978D00E69DCF /* BasicButton.swift in Sources */,
+				34B3BAE125D2978D00E69DCF /* UIButton.swift in Sources */,
+				34B3BAFE25D56AAD00E69DCF /* UIViewController.swift in Sources */,
 				34CC3C6525C2B2BB00A0B8D9 /* PresetsViewController.swift in Sources */,
 				343EC33E25C836AF000874EF /* PresetsView.swift in Sources */,
 				34CC3C6E25C2B43000A0B8D9 /* RootViewController.swift in Sources */,
 				34CC3C6B25C2B34800A0B8D9 /* SettingsViewController.swift in Sources */,
 				34CC3C6825C2B31500A0B8D9 /* LogViewController.swift in Sources */,
+				34B3BB0225D56AFA00E69DCF /* UIImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +372,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -383,6 +428,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -401,7 +447,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3HTJLKJT8Q;
-				INFOPLIST_FILE = JustBreathe/Info.plist;
+				INFOPLIST_FILE = "JustBreathe/Support Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -422,7 +468,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3HTJLKJT8Q;
-				INFOPLIST_FILE = JustBreathe/Info.plist;
+				INFOPLIST_FILE = "JustBreathe/Support Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

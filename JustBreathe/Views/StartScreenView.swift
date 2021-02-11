@@ -50,7 +50,7 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
 
         let title = UILabel()
         title.text = "4-7-8"
-        title.textColor = .white
+        title.textColor = R.color.white80()
         title.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         
         topView.addSubview(title)
@@ -119,13 +119,13 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         let label = UILabel()
         label.text = labelText
-        label.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
+        label.textColor = R.color.white60()
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         
         let countLabel = UILabel()
         countLabel.text = countLabelText
         countLabel.textAlignment = .right
-        countLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
+        countLabel.textColor = R.color.white60()
         countLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         
         textRow.addArrangedSubview(label)
@@ -160,7 +160,7 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         roundCountLabel.text = "10"
         roundCountLabel.textColor = .white
         roundCountLabel.textAlignment = .center
-        roundCountLabel.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
+        roundCountLabel.backgroundColor = R.color.white30()
         roundCountLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         roundCountLabel.layer.cornerRadius = 8
         roundCountLabel.layer.masksToBounds = true
@@ -184,7 +184,7 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
 
         let totalTimeLabel = UILabel()
         totalTimeLabel.text = "3m 10s"
-        totalTimeLabel.textColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: 0.6)
+        totalTimeLabel.textColor = R.color.white60()
         totalTimeLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         bottomView.addSubview(totalTimeLabel)
         totalTimeLabel.snp.makeConstraints { (make) in
@@ -192,10 +192,12 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             make.top.equalTo(repetitionRowView.snp.bottom).offset(16)
         }
         
-        let startButton = BasicButton(label: "Start")
+        let startButton = UIButton(label: "Start")
         startButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         bottomView.addSubview(startButton)
         startButton.snp.makeConstraints { (make) in
+            make.height.equalTo(44)
+            make.width.equalTo(120)
             make.centerX.equalToSuperview()
             make.bottom.equalTo(bottomView.safeAreaLayoutGuide.snp.bottomMargin).inset(50)
         }

@@ -32,20 +32,20 @@ class RootViewController: UITabBarController {
     
     func setupVCs() {
         let startScreenVC = createTabVC(VC: StartScreenViewController(),
-                                        selectedIcon: R.image.menuiconStartScreenSelected()?.withRenderingMode(.alwaysOriginal),
-                                        unSelectedIcon: R.image.menuiconStartScreenUnselected()?.withRenderingMode(.alwaysOriginal))
+                                        selectedIcon: UIImage.menuiconStartScreenSelected,
+                                        unSelectedIcon: UIImage.menuiconStartScreenUnSelected)
 
         let presetsVC = createTabVC(VC: PresetsViewController(),
-                                    selectedIcon: R.image.menuiconPresetsSelected()?.withRenderingMode(.alwaysOriginal),
-                                    unSelectedIcon: R.image.menuiconPresetsUnselected()?.withRenderingMode(.alwaysOriginal))
+                                    selectedIcon: UIImage.menuiconPresetsSelected,
+                                    unSelectedIcon: UIImage.menuiconPresetsUnselected)
 
         let logVC = createTabVC(VC: LogViewController(),
-                                selectedIcon: R.image.menuiconLogSelected()?.withRenderingMode(.alwaysOriginal),
-                                unSelectedIcon: R.image.menuiconLogUnselected()?.withRenderingMode(.alwaysOriginal))
+                                selectedIcon: UIImage.menuiconLogSelected,
+                                unSelectedIcon: UIImage.menuiconLogUnselected)
         
         let settingsVC = createTabVC(VC: SettingsViewController(),
-                                     selectedIcon: R.image.menuiconSettingsSelected()?.withRenderingMode(.alwaysOriginal),
-                                     unSelectedIcon: R.image.menuiconSettingsUnselected()?.withRenderingMode(.alwaysOriginal))
+                                     selectedIcon: UIImage.menuiconSettingsSelected,
+                                     unSelectedIcon: UIImage.menuiconSettingsUnselected)
         
         setViewControllers([startScreenVC, presetsVC, logVC, settingsVC], animated: false)
     }
