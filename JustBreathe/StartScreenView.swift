@@ -14,6 +14,7 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.distribution = .fill
         addSubview(stackView)
         stackView.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
@@ -27,12 +28,12 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         stackView.addArrangedSubview(middleView)
         stackView.addArrangedSubview(bottomView)
         
-        topView.snp.makeConstraints { make in
-            make.height.equalToSuperview().dividedBy(2.4)
+        middleView.snp.makeConstraints { make in
+            make.height.equalToSuperview().dividedBy(4.8)
         }
         
         bottomView.snp.makeConstraints { (make) in
-            make.height.equalToSuperview().dividedBy(2.6)
+            make.height.equalToSuperview().dividedBy(2.7)
         }
         
     }
@@ -46,20 +47,23 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         let img = R.image.iconCalm()
         let calmImg = UIImageView(image: img)
         calmImg.contentMode = .scaleAspectFit
-        topView.addSubview(calmImg)
-        calmImg.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(40)
-        }
-        
+
         let title = UILabel()
         title.text = "4-7-8"
         title.textColor = .white
         title.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        
         topView.addSubview(title)
+        topView.addSubview(calmImg)
+
         title.snp.makeConstraints { make in
-            make.top.equalTo(calmImg.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
+            make.bottom.equalTo(topView.snp.bottom)
+        }
+        
+        calmImg.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(title.snp.top).offset(-35)
         }
         
         return topView
@@ -78,88 +82,28 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             make.center.equalToSuperview()
         }
         
-        let inhaleRow = UIStackView()
-        inhaleRow.distribution = .equalSpacing
-
-        let inhaleLabel = UILabel()
-        inhaleLabel.text = "inhale"
-        inhaleLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-        inhaleLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        inhaleRow.addArrangedSubview(inhaleLabel)
-        
-        let inhaleCountLabel = UILabel()
-        inhaleCountLabel.text = "4"
-        inhaleCountLabel.textAlignment = .right
-        inhaleCountLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-        inhaleCountLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        inhaleRow.addArrangedSubview(inhaleCountLabel)
-        
+        let inhaleRow = createTextRow(labelText: "inhale", countLabelText: "4")
         tableContainer.addArrangedSubview(inhaleRow)
         inhaleRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
         
-        let holdRow = UIStackView()
-        holdRow.distribution = .equalSpacing
-
-        let holdLabel = UILabel()
-        holdLabel.text = "hold"
-        holdLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-        holdLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        holdRow.addArrangedSubview(holdLabel)
-        
-        let holdCountLabel = UILabel()
-        holdCountLabel.text = "7"
-        holdCountLabel.textAlignment = .right
-        holdCountLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-        holdCountLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        holdRow.addArrangedSubview(holdCountLabel)
-        
+        let holdRow = createTextRow(labelText: "hold", countLabelText: "7")
         tableContainer.addArrangedSubview(holdRow)
         holdRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
-        
-        let exhaleRow = UIStackView()
-        exhaleRow.distribution = .equalSpacing
 
-        let exhaleLabel = UILabel()
-        exhaleLabel.text = "exhale"
-        exhaleLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-        exhaleLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        exhaleRow.addArrangedSubview(exhaleLabel)
-        
-        let exhaleCountLabel = UILabel()
-        exhaleCountLabel.text = "8"
-        exhaleCountLabel.textAlignment = .right
-        exhaleCountLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-        exhaleCountLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        exhaleRow.addArrangedSubview(exhaleCountLabel)
-        
+        let exhaleRow = createTextRow(labelText: "exhale", countLabelText: "8")
         tableContainer.addArrangedSubview(exhaleRow)
         exhaleRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
         
-        let holdRow2 = UIStackView()
-        holdRow2.distribution = .equalSpacing
-        
-        let holdLabel2 = UILabel()
-        holdLabel2.text = "hold"
-        holdLabel2.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-        holdLabel2.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        holdRow2.addArrangedSubview(holdLabel2)
-        
-        let holdCountLabel2 = UILabel()
-        holdCountLabel2.text = "8"
-        holdCountLabel2.textAlignment = .right
-        holdCountLabel2.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-        holdCountLabel2.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        holdRow2.addArrangedSubview(holdCountLabel2)
-        
+        let holdRow2 = createTextRow(labelText: "hold", countLabelText: "8")
         tableContainer.addArrangedSubview(holdRow2)
         holdRow2.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
@@ -169,15 +113,36 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return middleView
     }
     
+    func createTextRow(labelText: String, countLabelText: String) -> UIStackView {
+        let textRow = UIStackView()
+        textRow.distribution = .equalSpacing
+        
+        let label = UILabel()
+        label.text = labelText
+        label.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        
+        let countLabel = UILabel()
+        countLabel.text = countLabelText
+        countLabel.textAlignment = .right
+        countLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
+        countLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        
+        textRow.addArrangedSubview(label)
+        textRow.addArrangedSubview(countLabel)
+        
+        return textRow
+    }
+    
     func createBottomView() -> UIView {
         let bottomView = UIView()
 
-        let stackView = UIStackView()
-        stackView.distribution = .equalSpacing
-        stackView.alignment = .center
-        bottomView.addSubview(stackView)
-        stackView.snp.makeConstraints { (make) in
-            make.top.equalTo(bottomView.snp.top).offset(30)
+        let repetitionRowView = UIStackView()
+        repetitionRowView.distribution = .equalSpacing
+        repetitionRowView.alignment = .center
+        bottomView.addSubview(repetitionRowView)
+        repetitionRowView.snp.makeConstraints { (make) in
+            make.top.equalTo(bottomView.snp.top).offset(20)
             make.centerX.equalToSuperview()
             make.width.equalTo(96)
             make.height.equalTo(35)
@@ -186,7 +151,7 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         let img = R.image.iconRepeat()
         let repeatIcon = UIImageView(image: img)
         repeatIcon.contentMode = .center
-        stackView.addArrangedSubview(repeatIcon)
+        repetitionRowView.addArrangedSubview(repeatIcon)
         repeatIcon.snp.makeConstraints { (make) in
             make.width.height.equalTo(32)
         }
@@ -199,7 +164,7 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         roundCountLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         roundCountLabel.layer.cornerRadius = 8
         roundCountLabel.layer.masksToBounds = true
-        stackView.addArrangedSubview(roundCountLabel)
+        repetitionRowView.addArrangedSubview(roundCountLabel)
         roundCountLabel.snp.makeConstraints { (make) in
             make.width.equalTo(48)
             make.height.equalTo(35)
@@ -224,7 +189,7 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         bottomView.addSubview(totalTimeLabel)
         totalTimeLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(stackView.snp.bottom).offset(16)
+            make.top.equalTo(repetitionRowView.snp.bottom).offset(16)
         }
         
         let startButton = BasicButton(label: "Start")

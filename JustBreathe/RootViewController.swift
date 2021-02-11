@@ -16,11 +16,10 @@ class RootViewController: UITabBarController {
     }
     
     func setTabBarStyles() {
-        let transparentBlackColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
-
+        let transparentColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
-        transparentBlackColor.setFill()
+        transparentColor.setFill()
         UIRectFill(rect)
 
         if let image = UIGraphicsGetImageFromCurrentImageContext() {
