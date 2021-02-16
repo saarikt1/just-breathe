@@ -76,7 +76,6 @@
 		34B3BAF025D561D700E69DCF /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */,
 				34CC3C7725C43BF800A0B8D9 /* R.generated.swift */,
 				34CC3C4525C167C200A0B8D9 /* Assets.xcassets */,
 				34CC3C4725C167C200A0B8D9 /* LaunchScreen.storyboard */,
@@ -96,27 +95,49 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		34B3BB0725D56F1100E69DCF /* Controllers */ = {
+		34B3BB0725D56F1100E69DCF /* SettingsScreen */ = {
 			isa = PBXGroup;
 			children = (
-				34CC3C6D25C2B43000A0B8D9 /* RootViewController.swift */,
-				34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */,
-				34CC3C6425C2B2BB00A0B8D9 /* PresetsViewController.swift */,
-				34CC3C6725C2B31500A0B8D9 /* LogViewController.swift */,
 				34CC3C6A25C2B34800A0B8D9 /* SettingsViewController.swift */,
+				343EC33625C832A9000874EF /* SettingsView.swift */,
 			);
-			path = Controllers;
+			path = SettingsScreen;
 			sourceTree = "<group>";
 		};
-		34B3BB0A25D56F2200E69DCF /* Views */ = {
+		34B3BB2025D6CCE700E69DCF /* StartScreen */ = {
 			isa = PBXGroup;
 			children = (
 				343EC33325C82C1D000874EF /* StartScreenView.swift */,
-				343EC33D25C836AF000874EF /* PresetsView.swift */,
-				343EC33A25C833F8000874EF /* LogView.swift */,
-				343EC33625C832A9000874EF /* SettingsView.swift */,
+				34CC3C4025C167C100A0B8D9 /* StartScreenViewController.swift */,
 			);
-			path = Views;
+			path = StartScreen;
+			sourceTree = "<group>";
+		};
+		34B3BB2125D6CD0200E69DCF /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				34CC3C6D25C2B43000A0B8D9 /* RootViewController.swift */,
+				34CC3C3C25C167C100A0B8D9 /* AppDelegate.swift */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
+		34B3BB2225D6CD2100E69DCF /* PresetScreen */ = {
+			isa = PBXGroup;
+			children = (
+				34CC3C6425C2B2BB00A0B8D9 /* PresetsViewController.swift */,
+				343EC33D25C836AF000874EF /* PresetsView.swift */,
+			);
+			path = PresetScreen;
+			sourceTree = "<group>";
+		};
+		34B3BB2325D6CD3B00E69DCF /* LogScreen */ = {
+			isa = PBXGroup;
+			children = (
+				34CC3C6725C2B31500A0B8D9 /* LogViewController.swift */,
+				343EC33A25C833F8000874EF /* LogView.swift */,
+			);
+			path = LogScreen;
 			sourceTree = "<group>";
 		};
 		34CC3C3025C167C100A0B8D9 = {
@@ -140,8 +161,11 @@
 		34CC3C3B25C167C100A0B8D9 /* JustBreathe */ = {
 			isa = PBXGroup;
 			children = (
-				34B3BB0725D56F1100E69DCF /* Controllers */,
-				34B3BB0A25D56F2200E69DCF /* Views */,
+				34B3BB2025D6CCE700E69DCF /* StartScreen */,
+				34B3BB2225D6CD2100E69DCF /* PresetScreen */,
+				34B3BB2325D6CD3B00E69DCF /* LogScreen */,
+				34B3BB0725D56F1100E69DCF /* SettingsScreen */,
+				34B3BB2125D6CD0200E69DCF /* Setup */,
 				34B3BAFC25D56A6C00E69DCF /* Extensions */,
 				34B3BAF025D561D700E69DCF /* Support Files */,
 			);
