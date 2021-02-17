@@ -46,19 +46,20 @@ class PresetsView: UIView {
         }
         
         let placeholderViewBeginning = UIView()
-        placeholderViewBeginning.backgroundColor = .green
-        
+
         let placeholderViewEnd = UIView()
-        placeholderViewEnd.backgroundColor = .green
-        
+
         let preset1 = UIView()
-        preset1.backgroundColor = .green
+        preset1.backgroundColor = R.color.white20()
+        preset1.layer.cornerRadius = 16
         
         let preset2 = UIView()
-        preset2.backgroundColor = .green
+        preset2.backgroundColor = R.color.white20()
+        preset2.layer.cornerRadius = 16
         
         let preset3 = UIView()
-        preset3.backgroundColor = .green
+        preset3.backgroundColor = R.color.white20()
+        preset3.layer.cornerRadius = 16
         
         presetStackView.addArrangedSubview(placeholderViewBeginning)
         presetStackView.addArrangedSubview(preset1)
