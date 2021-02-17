@@ -8,10 +8,14 @@
 import UIKit
 
 class PresetsView: UIView {
-    init() {
-        super.init(frame: CGRect.zero)
+    let controller: UIViewController
+    
+    init(controller: UIViewController) {
         let scrollArea = UIView()
+        self.controller = controller
 
+        super.init(frame: CGRect.zero)
+        
         addSubview(scrollArea)
         scrollArea.snp.makeConstraints { (make) in
             make.height.equalTo(323)
@@ -56,11 +60,16 @@ class PresetsView: UIView {
         let preset2 = UIView()
         preset2.backgroundColor = R.color.white20()
         preset2.layer.cornerRadius = 16
-        
+
         let preset3 = UIView()
         preset3.backgroundColor = R.color.white20()
         preset3.layer.cornerRadius = 16
+        preset3.isUserInteractionEnabled = true
+        let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(presetTapped))
+        gesture.numberOfTapsRequired = 1
+        preset3.addGestureRecognizer(gesture)
         
+
         presetStackView.addArrangedSubview(placeholderViewBeginning)
         presetStackView.addArrangedSubview(preset1)
         presetStackView.addArrangedSubview(preset2)
@@ -106,7 +115,13 @@ class PresetsView: UIView {
         }
         
     }
-    
+
+    @objc func presetTapped() {
+        let newView = UIViewController()
+        newView.view.backgroundColor = .systemTeal
+        self.controller.show(newView, sender: self)
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

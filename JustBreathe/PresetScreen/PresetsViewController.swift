@@ -12,7 +12,7 @@ class PresetsViewController: UIViewController {
         super.viewDidLoad()
         setBackground()
         
-        let presetsView = PresetsView()
+        let presetsView = PresetsView(controller: self)
         view.addSubview(presetsView)
         
         presetsView.snp.makeConstraints{ make in
