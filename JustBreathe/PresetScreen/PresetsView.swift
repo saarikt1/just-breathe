@@ -10,21 +10,30 @@ import UIKit
 class PresetsView: UIView {
     init() {
         super.init(frame: CGRect.zero)
+        let scrollArea = UIView()
+
+        addSubview(scrollArea)
+        scrollArea.snp.makeConstraints { (make) in
+            make.height.equalTo(323)
+            make.leading.trailing.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
+        
         let presetScrollview = UIScrollView()
-//        presetScrollview.backgroundColor = .systemPink
         presetScrollview.isPagingEnabled = true
         presetScrollview.clipsToBounds = false
         presetScrollview.showsHorizontalScrollIndicator = false
         presetScrollview.showsVerticalScrollIndicator = false
-        addSubview(presetScrollview)
+        scrollArea.addSubview(presetScrollview)
         presetScrollview.snp.makeConstraints { (make) in
             make.height.equalTo(323)
             make.width.equalTo(285)
             make.center.equalToSuperview()
         }
         
+        scrollArea.addGestureRecognizer(presetScrollview.panGestureRecognizer)
+
         let presetStackView = UIStackView()
-//        presetStackView.backgroundColor = .systemTeal
         presetStackView.axis = .horizontal
         presetStackView.distribution = .equalSpacing
         presetStackView.spacing = 32
@@ -61,12 +70,7 @@ class PresetsView: UIView {
             make.width.equalTo(0)
             make.height.equalTo(323)
         }
-        
-        placeholderViewEnd.snp.makeConstraints { (make) in
-            make.width.equalTo(0)
-            make.height.equalTo(323)
-        }
-        
+
         preset1.snp.makeConstraints { (make) in
             make.width.equalTo(253)
             make.height.equalTo(323)
@@ -82,14 +86,9 @@ class PresetsView: UIView {
             make.height.equalTo(323)
         }
         
-        let title = UILabel()
-        title.text = "Presets Page"
-        title.textColor = .white
-        title.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
-        addSubview(title)
-        title.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).inset(50)
+        placeholderViewEnd.snp.makeConstraints { (make) in
+            make.width.equalTo(0)
+            make.height.equalTo(323)
         }
     }
     
