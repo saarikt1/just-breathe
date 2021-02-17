@@ -15,10 +15,11 @@ class PresetsView: UIView {
         presetScrollview.isPagingEnabled = true
         presetScrollview.clipsToBounds = false
         presetScrollview.showsHorizontalScrollIndicator = false
+        presetScrollview.showsVerticalScrollIndicator = false
         addSubview(presetScrollview)
         presetScrollview.snp.makeConstraints { (make) in
             make.height.equalTo(323)
-            make.width.equalTo(275)
+            make.width.equalTo(285)
             make.center.equalToSuperview()
         }
         
@@ -29,9 +30,17 @@ class PresetsView: UIView {
         presetStackView.spacing = 32
         presetScrollview.addSubview(presetStackView)
         presetStackView.snp.makeConstraints { (make) in
-            make.top.bottom.leading.trailing.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+            make.leading.equalToSuperview().offset(-16)
+            make.trailing.equalToSuperview().inset(16)
             make.height.equalToSuperview()
         }
+        
+        let placeholderViewBeginning = UIView()
+        placeholderViewBeginning.backgroundColor = .green
+        
+        let placeholderViewEnd = UIView()
+        placeholderViewEnd.backgroundColor = .green
         
         let preset1 = UIView()
         preset1.backgroundColor = .green
@@ -42,9 +51,21 @@ class PresetsView: UIView {
         let preset3 = UIView()
         preset3.backgroundColor = .green
         
+        presetStackView.addArrangedSubview(placeholderViewBeginning)
         presetStackView.addArrangedSubview(preset1)
         presetStackView.addArrangedSubview(preset2)
         presetStackView.addArrangedSubview(preset3)
+        presetStackView.addArrangedSubview(placeholderViewEnd)
+        
+        placeholderViewBeginning.snp.makeConstraints { (make) in
+            make.width.equalTo(0)
+            make.height.equalTo(323)
+        }
+        
+        placeholderViewEnd.snp.makeConstraints { (make) in
+            make.width.equalTo(0)
+            make.height.equalTo(323)
+        }
         
         preset1.snp.makeConstraints { (make) in
             make.width.equalTo(253)
