@@ -91,6 +91,20 @@ class PresetsView: UIView {
             make.width.equalTo(0)
             make.height.equalTo(323)
         }
+        
+        let addPresetButton = UIButton(label: "Add Preset")
+        addPresetButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        addPresetButton.setImage(UIImage.plusSymbol, for: .normal)
+        addPresetButton.imageView?.contentMode = .scaleAspectFit
+        addPresetButton.imageEdgeInsets = UIEdgeInsets(top: 16, left: -2, bottom: 16, right: 2)
+        addSubview(addPresetButton)
+        addPresetButton.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.width.equalTo(152)
+            make.height.equalTo(44)
+            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-50)
+        }
+        
     }
     
     required init?(coder: NSCoder) {

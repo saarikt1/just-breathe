@@ -16,4 +16,5 @@ extension UIImage {
     static let menuiconLogUnselected = R.image.menuiconLogUnselected()?.withRenderingMode(.alwaysOriginal)
     static let menuiconSettingsSelected = R.image.menuiconSettingsSelected()?.withRenderingMode(.alwaysOriginal)
     static let menuiconSettingsUnselected = R.image.menuiconSettingsUnselected()?.withRenderingMode(.alwaysOriginal)
+    static let plusSymbol = UIImage(systemName: "plus")?.withTintColor(.white, renderingMode: .alwaysOriginal)
 }
