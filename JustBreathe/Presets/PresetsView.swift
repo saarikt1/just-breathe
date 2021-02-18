@@ -117,9 +117,8 @@ class PresetsView: UIView {
     }
 
     @objc func presetTapped() {
-        let newView = UIViewController()
-        newView.view.backgroundColor = .systemTeal
-        self.controller.show(newView, sender: self)
+        let presetDetailsViewController = PresetDetailsViewController()
+        self.controller.show(presetDetailsViewController, sender: self)
     }
 
     required init?(coder: NSCoder) {

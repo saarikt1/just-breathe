@@ -55,6 +55,12 @@ class RootViewController: UITabBarController {
         
         tabVC.navigationBar.setBackgroundImage(UIImage(), for: .default)
         tabVC.navigationBar.shadowImage = UIImage()
+        tabVC.navigationBar.tintColor = R.color.white80()
+        let navTitleStyles: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: R.color.white80() ?? .white,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .semibold)
+        ]
+        tabVC.navigationBar.titleTextAttributes = navTitleStyles
         tabVC.tabBarItem = UITabBarItem(title: nil, image: unSelectedIcon, selectedImage: selectedIcon)
         
         return tabVC
