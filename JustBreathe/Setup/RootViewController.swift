@@ -31,27 +31,28 @@ class RootViewController: UITabBarController {
     }
     
     func setupVCs() {
-        let startScreenVC = createTabVC(VC: StartScreenViewController(),
+        let startScreenVC = createTabVC(vc: StartScreenViewController(),
                                         selectedIcon: UIImage.menuiconStartScreenSelected,
                                         unSelectedIcon: UIImage.menuiconStartScreenUnSelected)
 
-        let presetsVC = createTabVC(VC: PresetsViewController(),
+        let presetsVC = createTabVC(vc: PresetsViewController(),
                                     selectedIcon: UIImage.menuiconPresetsSelected,
                                     unSelectedIcon: UIImage.menuiconPresetsUnselected)
 
-        let logVC = createTabVC(VC: LogViewController(),
+        let logVC = createTabVC(vc: LogViewController(),
                                 selectedIcon: UIImage.menuiconLogSelected,
                                 unSelectedIcon: UIImage.menuiconLogUnselected)
         
-        let settingsVC = createTabVC(VC: SettingsViewController(),
+        let settingsVC = createTabVC(vc: SettingsViewController(),
                                      selectedIcon: UIImage.menuiconSettingsSelected,
                                      unSelectedIcon: UIImage.menuiconSettingsUnselected)
         
         setViewControllers([startScreenVC, presetsVC, logVC, settingsVC], animated: false)
     }
     
-    func createTabVC(VC: UIViewController, selectedIcon: UIImage?, unSelectedIcon: UIImage?) -> UINavigationController {
-        let tabVC = UINavigationController(rootViewController: VC)
+    func createTabVC(vc: UIViewController, selectedIcon: UIImage?, unSelectedIcon: UIImage?) -> UINavigationController {
+        vc.navigationItem.title = ""
+        let tabVC = UINavigationController(rootViewController: vc)
         
         tabVC.navigationBar.setBackgroundImage(UIImage(), for: .default)
         tabVC.navigationBar.shadowImage = UIImage()
