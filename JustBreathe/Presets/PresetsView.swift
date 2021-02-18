@@ -117,7 +117,7 @@ class PresetsView: UIView {
     }
 
     @objc func presetTapped() {
-        let presetDetailsViewController = PresetDetailsViewController()
+        let presetDetailsViewController = PresetDetailsViewController(style: .grouped)
         self.controller.show(presetDetailsViewController, sender: self)
     }
 

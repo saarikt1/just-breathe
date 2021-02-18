@@ -18,6 +18,8 @@ class PresetDetailsView: UITableView {
         imageView.image = background
         imageView.center = self.center
         backgroundView = imageView
+        
+        rowHeight = 60
     }
 
     required init?(coder: NSCoder) {
