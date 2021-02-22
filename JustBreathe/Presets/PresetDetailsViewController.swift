@@ -16,6 +16,8 @@ class PresetDetailsViewController: UITableViewController {
         tableView = PresetDetailsView(frame: CGRect.zero, style: .grouped)
         title = "Preset 3"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.snp.makeConstraints { (make) in
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -56,6 +58,10 @@ class PresetDetailsViewController: UITableViewController {
         default:
             return "Additional section"
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 68.0
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
