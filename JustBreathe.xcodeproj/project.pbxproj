@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		341394D625E3B92200721D3F /* BreathingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341394D525E3B92200721D3F /* BreathingViewController.swift */; };
+		341394D925E3BBFB00721D3F /* BreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341394D825E3BBFB00721D3F /* BreathingView.swift */; };
 		342D939625DD781900D86596 /* PresetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D939525DD781900D86596 /* PresetDetailsViewController.swift */; };
 		343EC33425C82C1D000874EF /* StartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33325C82C1D000874EF /* StartScreenView.swift */; };
 		343EC33725C832A9000874EF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33625C832A9000874EF /* SettingsView.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		341394D525E3B92200721D3F /* BreathingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingViewController.swift; sourceTree = "<group>"; };
+		341394D825E3BBFB00721D3F /* BreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingView.swift; sourceTree = "<group>"; };
 		342D939525DD781900D86596 /* PresetDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetDetailsViewController.swift; sourceTree = "<group>"; };
 		343EC33325C82C1D000874EF /* StartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenView.swift; sourceTree = "<group>"; };
 		343EC33625C832A9000874EF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -75,6 +79,15 @@
 				F5A76AF782A92320988FCB2D /* Pods-JustBreathe.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		341394D425E3B90500721D3F /* Breathing */ = {
+			isa = PBXGroup;
+			children = (
+				341394D525E3B92200721D3F /* BreathingViewController.swift */,
+				341394D825E3BBFB00721D3F /* BreathingView.swift */,
+			);
+			path = Breathing;
 			sourceTree = "<group>";
 		};
 		34B3BAF025D561D700E69DCF /* Support Files */ = {
@@ -168,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				34B3BB2025D6CCE700E69DCF /* StartScreen */,
+				341394D425E3B90500721D3F /* Breathing */,
 				34B3BB2225D6CD2100E69DCF /* Presets */,
 				34B3BB2325D6CD3B00E69DCF /* Log */,
 				34B3BB0725D56F1100E69DCF /* Settings */,
@@ -331,6 +345,8 @@
 				342D939625DD781900D86596 /* PresetDetailsViewController.swift in Sources */,
 				34B3BAFE25D56AAD00E69DCF /* UIViewController.swift in Sources */,
 				34CC3C6525C2B2BB00A0B8D9 /* PresetsViewController.swift in Sources */,
+				341394D925E3BBFB00721D3F /* BreathingView.swift in Sources */,
+				341394D625E3B92200721D3F /* BreathingViewController.swift in Sources */,
 				343EC33E25C836AF000874EF /* PresetsView.swift in Sources */,
 				34CC3C6E25C2B43000A0B8D9 /* RootViewController.swift in Sources */,
 				34CC3C6B25C2B34800A0B8D9 /* SettingsViewController.swift in Sources */,

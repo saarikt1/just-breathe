@@ -65,7 +65,7 @@ class PresetsView: UIView {
         preset3.backgroundColor = R.color.white20()
         preset3.layer.cornerRadius = 16
         preset3.isUserInteractionEnabled = true
-        let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(presetTapped))
+        let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapPreset))
         gesture.numberOfTapsRequired = 1
         preset3.addGestureRecognizer(gesture)
         
@@ -116,7 +116,7 @@ class PresetsView: UIView {
         
     }
 
-    @objc func presetTapped() {
+    @objc func didTapPreset() {
         let presetDetailsViewController = PresetDetailsViewController(style: .grouped)
         self.controller.show(presetDetailsViewController, sender: self)
     }

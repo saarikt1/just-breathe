@@ -9,6 +9,8 @@ import UIKit
 
 class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    let startButton = UIButton(label: "Start")
+    
     init() {
         super.init(frame: CGRect.zero)
         
@@ -49,7 +51,7 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         calmImg.contentMode = .scaleAspectFit
 
         let title = UILabel()
-        title.text = "4-7-8"
+        title.text = "4-2-6"
         title.textColor = R.color.white80()
         title.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         
@@ -89,21 +91,21 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             make.height.equalTo(20)
         }
         
-        let holdRow = createTextRow(labelText: "hold", countLabelText: "7")
+        let holdRow = createTextRow(labelText: "hold", countLabelText: "2")
         tableContainer.addArrangedSubview(holdRow)
         holdRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
 
-        let exhaleRow = createTextRow(labelText: "exhale", countLabelText: "8")
+        let exhaleRow = createTextRow(labelText: "exhale", countLabelText: "6")
         tableContainer.addArrangedSubview(exhaleRow)
         exhaleRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
         
-        let holdRow2 = createTextRow(labelText: "hold", countLabelText: "8")
+        let holdRow2 = createTextRow(labelText: "hold", countLabelText: "0")
         tableContainer.addArrangedSubview(holdRow2)
         holdRow2.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
@@ -192,7 +194,6 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             make.top.equalTo(repetitionRowView.snp.bottom).offset(16)
         }
         
-        let startButton = UIButton(label: "Start")
         startButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         bottomView.addSubview(startButton)
         startButton.snp.makeConstraints { (make) in

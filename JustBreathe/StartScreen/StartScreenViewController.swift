@@ -21,5 +21,12 @@ class StartScreenViewController: UIViewController {
             make.top.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview()
         }
+        
+        startScreenView.startButton.addTarget(self, action: #selector(didTapStartButton), for: .touchUpInside)
+    }
+    
+    @objc func didTapStartButton() {
+        let breathingViewController = BreathingViewController()
+        show(breathingViewController, sender: self)
     }
 }
