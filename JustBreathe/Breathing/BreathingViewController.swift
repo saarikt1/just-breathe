@@ -37,6 +37,8 @@ class BreathingViewController: UIViewController {
         let rotateAndScaleUp = rotate.scaledBy(x: 1.5, y: 1.5)
 
         if cycles < 1 {
+            self.breathingLabel.alpha = 1.00
+            self.breathingLabel.text = "Well done!"
             return
         }
 
@@ -61,7 +63,7 @@ class BreathingViewController: UIViewController {
                         self.breathingLabel.text = ""
                         self.breathingLabel.alpha = 1.00
                     }) { _ in
-
+                        
                         self.startAnimation(inhale: inhale, firstHold: firstHold, exhale: exhale, secondHold: secondHold, cycles: cycles-1)
                     }
                 }
