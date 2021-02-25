@@ -7,14 +7,20 @@
 
 import UIKit
 
-class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
+class StartScreenView: UIView {
     
     let startButton = UIButton(label: "Start")
     var selectedPreset: BreathingModel
-    
+    var pickerDoneButton: UIBarButtonItem
+    let cyclesTextField: PickerViewTextField
+    var cyclesPicker: UIPickerView
+
     init(selectedPreset: BreathingModel) {
         self.selectedPreset = selectedPreset
-        
+        self.cyclesPicker = UIPickerView()
+        self.cyclesTextField = PickerViewTextField()
+        self.pickerDoneButton = UIBarButtonItem()
+
         super.init(frame: CGRect.zero)
         
         let stackView = UIStackView()
@@ -22,7 +28,7 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         stackView.distribution = .fill
         addSubview(stackView)
         stackView.snp.makeConstraints{ make in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(self.snp.edges)
         }
         
         let topView = createTopView()
@@ -39,6 +45,7 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         bottomView.snp.makeConstraints { (make) in
             make.height.equalToSuperview().dividedBy(2.7)
+            make.bottom.equalTo(stackView.snp.bottom)
         }
         
     }
@@ -161,31 +168,18 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             make.width.height.equalTo(32)
         }
         
-        let roundCountLabel = UILabel()
-        roundCountLabel.text = "10"
-        roundCountLabel.textColor = .white
-        roundCountLabel.textAlignment = .center
-        roundCountLabel.backgroundColor = R.color.white30()
-        roundCountLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        roundCountLabel.layer.cornerRadius = 8
-        roundCountLabel.layer.masksToBounds = true
-        repetitionRowView.addArrangedSubview(roundCountLabel)
-        roundCountLabel.snp.makeConstraints { (make) in
+        cyclesTextField.text = "10"
+        cyclesTextField.textColor = .white
+        cyclesTextField.textAlignment = .center
+        cyclesTextField.backgroundColor = R.color.white30()
+        cyclesTextField.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        cyclesTextField.layer.cornerRadius = 8
+        cyclesTextField.layer.masksToBounds = true
+        repetitionRowView.addArrangedSubview(cyclesTextField)
+        cyclesTextField.snp.makeConstraints { (make) in
             make.width.equalTo(48)
             make.height.equalTo(35)
         }
-        
-        let roundPicker = UIPickerView()
-        roundPicker.delegate = self
-        roundPicker.dataSource = self
-        roundPicker.backgroundColor = .white
-        bottomView.addSubview(roundPicker)
-        roundPicker.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.leading.trailing.equalTo(bottomView)
-            make.bottom.equalTo(bottomView.snp.bottom)
-        }
-        roundPicker.isHidden = true
 
         let totalTimeLabel = UILabel()
         totalTimeLabel.text = "3m 10s"
@@ -205,20 +199,24 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             make.centerX.equalToSuperview()
             make.bottom.equalTo(bottomView.safeAreaLayoutGuide.snp.bottomMargin).inset(50)
         }
+
         return bottomView
     }
     
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+    func showPickerView(_ textField: UITextField) {
+        cyclesPicker.backgroundColor = .white
+        cyclesTextField.inputView = cyclesPicker
+
+        let pickerToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 100, height: 0))
+        pickerToolBar.tintColor = .black
+        pickerToolBar.sizeToFit()
+        
+        pickerDoneButton.style = .done
+        pickerDoneButton.title = "Done"
+
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        pickerToolBar.setItems([spaceButton, pickerDoneButton], animated: false)
+        pickerToolBar.isUserInteractionEnabled = true
+        cyclesTextField.inputAccessoryView = pickerToolBar
     }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 3
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "10"
-    }
-    
 }

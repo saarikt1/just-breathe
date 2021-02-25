@@ -12,6 +12,7 @@
 		341394DD25E679FD00721D3F /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341394DC25E679FD00721D3F /* BreathingModel.swift */; };
 		341394E025E6856C00721D3F /* PresetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341394DF25E6856C00721D3F /* PresetController.swift */; };
 		342D939625DD781900D86596 /* PresetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D939525DD781900D86596 /* PresetDetailsViewController.swift */; };
+		34366ECB25E7E36F00587C8B /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34366ECA25E7E36F00587C8B /* UITextField.swift */; };
 		343EC33425C82C1D000874EF /* StartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33325C82C1D000874EF /* StartScreenView.swift */; };
 		343EC33725C832A9000874EF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33625C832A9000874EF /* SettingsView.swift */; };
 		343EC33B25C833F8000874EF /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33A25C833F8000874EF /* LogView.swift */; };
@@ -39,6 +40,7 @@
 		341394DC25E679FD00721D3F /* BreathingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingModel.swift; sourceTree = "<group>"; };
 		341394DF25E6856C00721D3F /* PresetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetController.swift; sourceTree = "<group>"; };
 		342D939525DD781900D86596 /* PresetDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetDetailsViewController.swift; sourceTree = "<group>"; };
+		34366ECA25E7E36F00587C8B /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		343EC33325C82C1D000874EF /* StartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenView.swift; sourceTree = "<group>"; };
 		343EC33625C832A9000874EF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		343EC33A25C833F8000874EF /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				34B3BAE025D2978D00E69DCF /* UIButton.swift */,
 				34B3BAFD25D56AAD00E69DCF /* UIViewController.swift */,
 				34B3BB0125D56AFA00E69DCF /* UIImage.swift */,
+				34366ECA25E7E36F00587C8B /* UITextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			files = (
 				341394E025E6856C00721D3F /* PresetController.swift in Sources */,
 				34CC3C4125C167C100A0B8D9 /* StartScreenViewController.swift in Sources */,
+				34366ECB25E7E36F00587C8B /* UITextField.swift in Sources */,
 				343EC33425C82C1D000874EF /* StartScreenView.swift in Sources */,
 				34CC3C7825C43BF800A0B8D9 /* R.generated.swift in Sources */,
 				343EC33B25C833F8000874EF /* LogView.swift in Sources */,
