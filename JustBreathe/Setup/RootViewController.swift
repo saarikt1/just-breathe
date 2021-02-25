@@ -8,6 +8,7 @@
 import UIKit
 
 class RootViewController: UITabBarController {
+    var presetController = PresetController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,10 @@ class RootViewController: UITabBarController {
     }
     
     func setupVCs() {
-        let startScreenVC = createTabVC(vc: StartScreenViewController(),
+        let startScreenViewController = StartScreenViewController()
+        startScreenViewController.presetController = self.presetController
+        
+        let startScreenVC = createTabVC(vc: startScreenViewController,
                                         selectedIcon: UIImage.menuiconStartScreenSelected,
                                         unSelectedIcon: UIImage.menuiconStartScreenUnSelected)
 

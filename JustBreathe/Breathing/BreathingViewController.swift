@@ -10,12 +10,22 @@ import UIKit
 class BreathingViewController: UIViewController {
     let breathingView = BreathingView()
     var breathingLabel = UILabel()
-
+    var selectedPreset: BreathingModel
+    
+    init(selectedPreset: BreathingModel) {
+        self.selectedPreset = selectedPreset
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackground()
         
-        breathingLabel.text = "Inhale"
         breathingLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         breathingLabel.textColor = R.color.white80()
 
@@ -29,7 +39,7 @@ class BreathingViewController: UIViewController {
             make.bottom.equalTo(breathingView.breatheLogo.snp.top).offset(-100)
         }
         
-        startAnimation(inhale: 4, firstHold: 2, exhale: 6, secondHold: 0, cycles: 3)
+        startAnimation(inhale: selectedPreset.inhale, firstHold: selectedPreset.firstHold, exhale: selectedPreset.exhale, secondHold: selectedPreset.secondHold, cycles: 3)
     }
     
     func startAnimation(inhale: Int, firstHold: Int, exhale: Int, secondHold: Int, cycles: Int) {

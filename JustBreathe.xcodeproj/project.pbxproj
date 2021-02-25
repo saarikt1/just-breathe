@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		341394D625E3B92200721D3F /* BreathingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341394D525E3B92200721D3F /* BreathingViewController.swift */; };
 		341394D925E3BBFB00721D3F /* BreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341394D825E3BBFB00721D3F /* BreathingView.swift */; };
+		341394DD25E679FD00721D3F /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341394DC25E679FD00721D3F /* BreathingModel.swift */; };
+		341394E025E6856C00721D3F /* PresetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341394DF25E6856C00721D3F /* PresetController.swift */; };
 		342D939625DD781900D86596 /* PresetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D939525DD781900D86596 /* PresetDetailsViewController.swift */; };
 		343EC33425C82C1D000874EF /* StartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33325C82C1D000874EF /* StartScreenView.swift */; };
 		343EC33725C832A9000874EF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EC33625C832A9000874EF /* SettingsView.swift */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		341394D525E3B92200721D3F /* BreathingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingViewController.swift; sourceTree = "<group>"; };
 		341394D825E3BBFB00721D3F /* BreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingView.swift; sourceTree = "<group>"; };
+		341394DC25E679FD00721D3F /* BreathingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingModel.swift; sourceTree = "<group>"; };
+		341394DF25E6856C00721D3F /* PresetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetController.swift; sourceTree = "<group>"; };
 		342D939525DD781900D86596 /* PresetDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetDetailsViewController.swift; sourceTree = "<group>"; };
 		343EC33325C82C1D000874EF /* StartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenView.swift; sourceTree = "<group>"; };
 		343EC33625C832A9000874EF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 			children = (
 				341394D525E3B92200721D3F /* BreathingViewController.swift */,
 				341394D825E3BBFB00721D3F /* BreathingView.swift */,
+				341394DC25E679FD00721D3F /* BreathingModel.swift */,
 			);
 			path = Breathing;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 				343EC33D25C836AF000874EF /* PresetsView.swift */,
 				342D939525DD781900D86596 /* PresetDetailsViewController.swift */,
 				34667A6225DE8CEE00BF338F /* PresetDetailsView.swift */,
+				341394DF25E6856C00721D3F /* PresetController.swift */,
 			);
 			path = Presets;
 			sourceTree = "<group>";
@@ -334,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				341394E025E6856C00721D3F /* PresetController.swift in Sources */,
 				34CC3C4125C167C100A0B8D9 /* StartScreenViewController.swift in Sources */,
 				343EC33425C82C1D000874EF /* StartScreenView.swift in Sources */,
 				34CC3C7825C43BF800A0B8D9 /* R.generated.swift in Sources */,
@@ -351,6 +358,7 @@
 				34CC3C6E25C2B43000A0B8D9 /* RootViewController.swift in Sources */,
 				34CC3C6B25C2B34800A0B8D9 /* SettingsViewController.swift in Sources */,
 				34CC3C6825C2B31500A0B8D9 /* LogViewController.swift in Sources */,
+				341394DD25E679FD00721D3F /* BreathingModel.swift in Sources */,
 				34B3BB0225D56AFA00E69DCF /* UIImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

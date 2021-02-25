@@ -9,12 +9,13 @@ import UIKit
 import SnapKit
 
 class StartScreenViewController: UIViewController {
-    
+    var presetController: PresetController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setBackground()
-        let startScreenView = StartScreenView()
+        let startScreenView = StartScreenView(selectedPreset: presetController.selectedPreset)
         view.addSubview(startScreenView)
         
         startScreenView.snp.makeConstraints{ make in
@@ -26,7 +27,7 @@ class StartScreenViewController: UIViewController {
     }
     
     @objc func didTapStartButton() {
-        let breathingViewController = BreathingViewController()
+        let breathingViewController = BreathingViewController(selectedPreset: presetController.selectedPreset)
         show(breathingViewController, sender: self)
     }
 }

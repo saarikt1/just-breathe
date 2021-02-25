@@ -10,8 +10,11 @@ import UIKit
 class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     let startButton = UIButton(label: "Start")
+    var selectedPreset: BreathingModel
     
-    init() {
+    init(selectedPreset: BreathingModel) {
+        self.selectedPreset = selectedPreset
+        
         super.init(frame: CGRect.zero)
         
         let stackView = UIStackView()
@@ -51,7 +54,7 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         calmImg.contentMode = .scaleAspectFit
 
         let title = UILabel()
-        title.text = "4-2-6"
+        title.text = selectedPreset.name
         title.textColor = R.color.white80()
         title.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         
@@ -84,28 +87,28 @@ class StartScreenView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             make.center.equalToSuperview()
         }
         
-        let inhaleRow = createTextRow(labelText: "inhale", countLabelText: "4")
+        let inhaleRow = createTextRow(labelText: "inhale", countLabelText: String(selectedPreset.inhale))
         tableContainer.addArrangedSubview(inhaleRow)
         inhaleRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
         
-        let holdRow = createTextRow(labelText: "hold", countLabelText: "2")
+        let holdRow = createTextRow(labelText: "hold", countLabelText: String(selectedPreset.firstHold))
         tableContainer.addArrangedSubview(holdRow)
         holdRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
 
-        let exhaleRow = createTextRow(labelText: "exhale", countLabelText: "6")
+        let exhaleRow = createTextRow(labelText: "exhale", countLabelText: String(selectedPreset.exhale))
         tableContainer.addArrangedSubview(exhaleRow)
         exhaleRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
         
-        let holdRow2 = createTextRow(labelText: "hold", countLabelText: "0")
+        let holdRow2 = createTextRow(labelText: "hold", countLabelText: String(selectedPreset.secondHold))
         tableContainer.addArrangedSubview(holdRow2)
         holdRow2.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()

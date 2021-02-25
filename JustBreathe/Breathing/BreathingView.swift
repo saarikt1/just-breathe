@@ -21,7 +21,6 @@ class BreathingView: UIView {
         breatheLogo.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
         }
-        
     }
     
     required init?(coder: NSCoder) {
