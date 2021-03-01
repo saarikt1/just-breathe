@@ -38,8 +38,11 @@ class RootViewController: UITabBarController {
         let startScreenVC = createTabVC(vc: startScreenViewController,
                                         selectedIcon: UIImage.menuiconStartScreenSelected,
                                         unSelectedIcon: UIImage.menuiconStartScreenUnSelected)
+        
+       let presetViewController = PresetsViewController()
+        presetViewController.presetController = self.presetController
 
-        let presetsVC = createTabVC(vc: PresetsViewController(),
+        let presetsVC = createTabVC(vc: presetViewController,
                                     selectedIcon: UIImage.menuiconPresetsSelected,
                                     unSelectedIcon: UIImage.menuiconPresetsUnselected)
 

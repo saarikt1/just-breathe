@@ -9,10 +9,12 @@ import UIKit
 
 class PresetsView: UIView {
     let controller: UIViewController
+    let presetController: PresetController
     
-    init(controller: UIViewController) {
+    init(controller: UIViewController, presetController: PresetController) {
         let scrollArea = UIView()
         self.controller = controller
+        self.presetController = presetController
 
         super.init(frame: CGRect.zero)
         
@@ -52,28 +54,35 @@ class PresetsView: UIView {
         let placeholderViewBeginning = UIView()
 
         let placeholderViewEnd = UIView()
-
-        let preset1 = UIView()
-        preset1.backgroundColor = R.color.white20()
-        preset1.layer.cornerRadius = 16
-        
-        let preset2 = UIView()
-        preset2.backgroundColor = R.color.white20()
-        preset2.layer.cornerRadius = 16
-
-        let preset3 = UIView()
-        preset3.backgroundColor = R.color.white20()
-        preset3.layer.cornerRadius = 16
-        preset3.isUserInteractionEnabled = true
-        let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapPreset))
-        gesture.numberOfTapsRequired = 1
-        preset3.addGestureRecognizer(gesture)
-        
-
         presetStackView.addArrangedSubview(placeholderViewBeginning)
-        presetStackView.addArrangedSubview(preset1)
-        presetStackView.addArrangedSubview(preset2)
-        presetStackView.addArrangedSubview(preset3)
+
+        for preset in presetController.presetList {
+            let presetView = UIView()
+            presetView.backgroundColor = R.color.white20()
+            presetView.layer.cornerRadius = 16
+            presetView.isUserInteractionEnabled = true
+            let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapPreset))
+            gesture.numberOfTapsRequired = 1
+            presetView.addGestureRecognizer(gesture)
+            
+            let nameLabel = UILabel()
+            nameLabel.text = preset.name
+            nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+            nameLabel.textColor = R.color.white80()
+            
+            presetView.addSubview(nameLabel)
+            nameLabel.snp.makeConstraints { (make) in
+                make.center.equalToSuperview()
+            }
+            
+            presetStackView.addArrangedSubview(presetView)
+            
+            presetView.snp.makeConstraints { (make) in
+                make.width.equalTo(253)
+                make.height.equalTo(323)
+            }
+        }
+        
         presetStackView.addArrangedSubview(placeholderViewEnd)
         
         placeholderViewBeginning.snp.makeConstraints { (make) in
@@ -81,21 +90,6 @@ class PresetsView: UIView {
             make.height.equalTo(323)
         }
 
-        preset1.snp.makeConstraints { (make) in
-            make.width.equalTo(253)
-            make.height.equalTo(323)
-        }
-        
-        preset2.snp.makeConstraints { (make) in
-            make.width.equalTo(253)
-            make.height.equalTo(323)
-        }
-        
-        preset3.snp.makeConstraints { (make) in
-            make.width.equalTo(253)
-            make.height.equalTo(323)
-        }
-        
         placeholderViewEnd.snp.makeConstraints { (make) in
             make.width.equalTo(0)
             make.height.equalTo(323)

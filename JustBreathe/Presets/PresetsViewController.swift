@@ -8,11 +8,13 @@
 import UIKit
 
 class PresetsViewController: UIViewController {
+    var presetController: PresetController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackground()
         
-        let presetsView = PresetsView(controller: self)
+        let presetsView = PresetsView(controller: self, presetController: self.presetController)
         view.addSubview(presetsView)
         
         presetsView.snp.makeConstraints{ make in
