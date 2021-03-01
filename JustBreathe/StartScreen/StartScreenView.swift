@@ -14,6 +14,7 @@ class StartScreenView: UIView {
     var pickerDoneButton: UIBarButtonItem
     let breathCycleTextField: PickerViewTextField
     var cyclesPicker: UIPickerView
+    var totalTimeLabel: UILabel!
 
     init(selectedPreset: BreathingModel) {
         self.selectedPreset = selectedPreset
@@ -181,8 +182,8 @@ class StartScreenView: UIView {
             make.height.equalTo(35)
         }
 
-        let totalTimeLabel = UILabel()
-        totalTimeLabel.text = "3m 10s"
+        totalTimeLabel = UILabel()
+        totalTimeLabel.text = ""
         totalTimeLabel.textColor = R.color.white60()
         totalTimeLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         bottomView.addSubview(totalTimeLabel)
@@ -203,6 +204,7 @@ class StartScreenView: UIView {
         return bottomView
     }
     
+
     func showPickerView(_ textField: UITextField) {
         cyclesPicker.backgroundColor = .white
         breathCycleTextField.inputView = cyclesPicker
