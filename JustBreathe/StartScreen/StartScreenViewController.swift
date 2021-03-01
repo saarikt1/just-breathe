@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class StartScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class StartScreenViewController: UIViewController {
     var presetController: PresetController!
     var startScreenView: StartScreenView!
 
@@ -19,7 +19,7 @@ class StartScreenViewController: UIViewController, UIPickerViewDelegate, UIPicke
         startScreenView = StartScreenView(selectedPreset: presetController.selectedPreset)
         startScreenView.cyclesPicker.delegate = self
         startScreenView.cyclesPicker.dataSource = self
-        startScreenView.cyclesTextField.delegate = self
+        startScreenView.breathCycleTextField.delegate = self
         view.addSubview(startScreenView)
         
         startScreenView.snp.makeConstraints{ make in
@@ -38,13 +38,26 @@ class StartScreenViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @objc func didTapDoneButton() {
-        startScreenView.cyclesTextField.resignFirstResponder()
+        startScreenView.breathCycleTextField.resignFirstResponder()
     }
+}
 
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        startScreenView.showPickerView(startScreenView.cyclesTextField)
-        return true
+// MARK: - UIPickerViewDelegate
+
+extension StartScreenViewController: UIPickerViewDelegate {
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(row)"
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        startScreenView.breathCycleTextField.text = "\(row)"
+    }
+}
+
+// MARK: - UIPickerViewDataSource
+
+extension StartScreenViewController: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -53,12 +66,14 @@ class StartScreenViewController: UIViewController, UIPickerViewDelegate, UIPicke
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 3
     }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension StartScreenViewController: UITextFieldDelegate {
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(row)"
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        startScreenView.cyclesTextField.text = "\(row)"
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        startScreenView.showPickerView(startScreenView.breathCycleTextField)
+        return true
     }
 }

@@ -12,13 +12,13 @@ class StartScreenView: UIView {
     let startButton = UIButton(label: "Start")
     var selectedPreset: BreathingModel
     var pickerDoneButton: UIBarButtonItem
-    let cyclesTextField: PickerViewTextField
+    let breathCycleTextField: PickerViewTextField
     var cyclesPicker: UIPickerView
 
     init(selectedPreset: BreathingModel) {
         self.selectedPreset = selectedPreset
         self.cyclesPicker = UIPickerView()
-        self.cyclesTextField = PickerViewTextField()
+        self.breathCycleTextField = PickerViewTextField()
         self.pickerDoneButton = UIBarButtonItem()
 
         super.init(frame: CGRect.zero)
@@ -168,15 +168,15 @@ class StartScreenView: UIView {
             make.width.height.equalTo(32)
         }
         
-        cyclesTextField.text = "10"
-        cyclesTextField.textColor = .white
-        cyclesTextField.textAlignment = .center
-        cyclesTextField.backgroundColor = R.color.white30()
-        cyclesTextField.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        cyclesTextField.layer.cornerRadius = 8
-        cyclesTextField.layer.masksToBounds = true
-        repetitionRowView.addArrangedSubview(cyclesTextField)
-        cyclesTextField.snp.makeConstraints { (make) in
+        breathCycleTextField.text = "10"
+        breathCycleTextField.textColor = .white
+        breathCycleTextField.textAlignment = .center
+        breathCycleTextField.backgroundColor = R.color.white30()
+        breathCycleTextField.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        breathCycleTextField.layer.cornerRadius = 8
+        breathCycleTextField.layer.masksToBounds = true
+        repetitionRowView.addArrangedSubview(breathCycleTextField)
+        breathCycleTextField.snp.makeConstraints { (make) in
             make.width.equalTo(48)
             make.height.equalTo(35)
         }
@@ -205,7 +205,7 @@ class StartScreenView: UIView {
     
     func showPickerView(_ textField: UITextField) {
         cyclesPicker.backgroundColor = .white
-        cyclesTextField.inputView = cyclesPicker
+        breathCycleTextField.inputView = cyclesPicker
 
         let pickerToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 100, height: 0))
         pickerToolBar.tintColor = .black
@@ -217,6 +217,6 @@ class StartScreenView: UIView {
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         pickerToolBar.setItems([spaceButton, pickerDoneButton], animated: false)
         pickerToolBar.isUserInteractionEnabled = true
-        cyclesTextField.inputAccessoryView = pickerToolBar
+        breathCycleTextField.inputAccessoryView = pickerToolBar
     }
 }
