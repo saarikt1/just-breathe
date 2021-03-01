@@ -9,6 +9,7 @@ import Foundation
 
 struct BreathingModel {
     var name: String
+    var id: Int
     var inhale: Int
     var firstHold = 0
     var exhale: Int
