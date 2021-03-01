@@ -11,13 +11,14 @@ import SnapKit
 class StartScreenViewController: UIViewController {
     var presetController: PresetController!
     var startScreenView: StartScreenView!
-    let breathCycleChoices = [3, 5, 10, 20, 30, 50]
+    var selectedPreset: BreathingModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setBackground()
-        startScreenView = StartScreenView(selectedPreset: presetController.selectedPreset)
+        selectedPreset = presetController.selectedPreset
+        startScreenView = StartScreenView(selectedPreset: selectedPreset)
         startScreenView.cyclesPicker.delegate = self
         startScreenView.cyclesPicker.dataSource = self
         startScreenView.breathCycleTextField.delegate = self
@@ -34,7 +35,8 @@ class StartScreenViewController: UIViewController {
     }
     
     @objc func didTapStartButton() {
-        let breathingViewController = BreathingViewController(selectedPreset: presetController.selectedPreset)
+        let selectedBreathCycleAmount = selectedPreset.breathingCycles[startScreenView.cyclesPicker.selectedRow(inComponent: 0)]
+        let breathingViewController = BreathingViewController(selectedPreset: selectedPreset, breathCycles: selectedBreathCycleAmount)
         show(breathingViewController, sender: self)
     }
     
@@ -48,11 +50,11 @@ class StartScreenViewController: UIViewController {
 extension StartScreenViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(breathCycleChoices[row])"
+        return "\(selectedPreset.breathingCycles[row])"
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        startScreenView.breathCycleTextField.text = "\(breathCycleChoices[row])"
+        startScreenView.breathCycleTextField.text = "\(selectedPreset.breathingCycles[row])"
     }
 }
 
@@ -65,7 +67,7 @@ extension StartScreenViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return breathCycleChoices.count
+        return selectedPreset.breathingCycles.count
     }
 }
 

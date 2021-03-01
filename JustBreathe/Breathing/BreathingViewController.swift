@@ -11,9 +11,11 @@ class BreathingViewController: UIViewController {
     let breathingView = BreathingView()
     var breathingLabel = UILabel()
     var selectedPreset: BreathingModel
+    var breathCycles: Int
     
-    init(selectedPreset: BreathingModel) {
+    init(selectedPreset: BreathingModel, breathCycles: Int) {
         self.selectedPreset = selectedPreset
+        self.breathCycles = breathCycles
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -39,7 +41,7 @@ class BreathingViewController: UIViewController {
             make.bottom.equalTo(breathingView.breatheLogo.snp.top).offset(-100)
         }
         
-        startAnimation(inhale: selectedPreset.inhale, firstHold: selectedPreset.firstHold, exhale: selectedPreset.exhale, secondHold: selectedPreset.secondHold, cycles: 3)
+        startAnimation(inhale: selectedPreset.inhale, firstHold: selectedPreset.firstHold, exhale: selectedPreset.exhale, secondHold: selectedPreset.secondHold, cycles: breathCycles)
     }
     
     func startAnimation(inhale: Int, firstHold: Int, exhale: Int, secondHold: Int, cycles: Int) {
