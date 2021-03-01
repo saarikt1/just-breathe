@@ -10,8 +10,15 @@ import Foundation
 struct BreathingModel {
     var name: String
     var inhale: Int
-    var firstHold: Int
+    var firstHold = 0
     var exhale: Int
-    var secondHold: Int
-    var selected: Bool
+    var secondHold = 0
+    var breathingCycles = [3, 5, 10, 20, 30, 50]
+    var defaultBreathingCycleIndex = 2
+    
+    var defaultBreathingCycle: Int {
+        get {
+            return breathingCycles[defaultBreathingCycleIndex]
+        }
+    }
 }

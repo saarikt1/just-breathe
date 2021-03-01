@@ -11,6 +11,7 @@ import SnapKit
 class StartScreenViewController: UIViewController {
     var presetController: PresetController!
     var startScreenView: StartScreenView!
+    let breathCycleChoices = [3, 5, 10, 20, 30, 50]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +48,11 @@ class StartScreenViewController: UIViewController {
 extension StartScreenViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(row)"
+        return "\(breathCycleChoices[row])"
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        startScreenView.breathCycleTextField.text = "\(row)"
+        startScreenView.breathCycleTextField.text = "\(breathCycleChoices[row])"
     }
 }
 
@@ -64,7 +65,7 @@ extension StartScreenViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 3
+        return breathCycleChoices.count
     }
 }
 

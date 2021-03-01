@@ -168,7 +168,7 @@ class StartScreenView: UIView {
             make.width.height.equalTo(32)
         }
         
-        breathCycleTextField.text = "10"
+        breathCycleTextField.text = "\(selectedPreset.defaultBreathingCycle)"
         breathCycleTextField.textColor = .white
         breathCycleTextField.textAlignment = .center
         breathCycleTextField.backgroundColor = R.color.white30()
@@ -206,6 +206,7 @@ class StartScreenView: UIView {
     func showPickerView(_ textField: UITextField) {
         cyclesPicker.backgroundColor = .white
         breathCycleTextField.inputView = cyclesPicker
+        cyclesPicker.selectRow(selectedPreset.defaultBreathingCycleIndex, inComponent: 0, animated: false)
 
         let pickerToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 100, height: 0))
         pickerToolBar.tintColor = .black
