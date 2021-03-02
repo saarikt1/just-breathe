@@ -65,14 +65,35 @@ class PresetsView: UIView {
             gesture.numberOfTapsRequired = 1
             presetView.addGestureRecognizer(gesture)
             
+            let img = R.image.iconCalm()
+            let presetIcon = UIImageView(image: img)
+            presetIcon.contentMode = .scaleAspectFit
+
             let nameLabel = UILabel()
             nameLabel.text = preset.name
             nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
             nameLabel.textColor = R.color.white80()
             
+            let breathCountView = createBreathCountView(for: preset)
+
+            presetView.addSubview(presetIcon)
             presetView.addSubview(nameLabel)
+            presetView.addSubview(breathCountView)
+            
+            presetIcon.snp.makeConstraints { (make) in
+                make.height.equalTo(100)
+                make.centerX.equalToSuperview()
+                make.top.equalTo(presetView.snp.top).offset(32)
+            }
             nameLabel.snp.makeConstraints { (make) in
                 make.center.equalToSuperview()
+            }
+            
+            breathCountView.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.width.equalTo(100)
+                make.height.equalTo(100)
+                make.bottom.equalTo(presetView.snp.bottom).offset(-32)
             }
             
             presetStackView.addArrangedSubview(presetView)
@@ -107,9 +128,74 @@ class PresetsView: UIView {
             make.height.equalTo(44)
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-50)
         }
-        
     }
+    
+    private func createBreathCountView(for selectedPreset: BreathingModel) -> UIView {
+        let containerView = UIView()
+        let rowHeight = 17
 
+        let tableContainer = UIStackView()
+        tableContainer.axis = .vertical
+        tableContainer.distribution = .equalSpacing
+        containerView.addSubview(tableContainer)
+        tableContainer.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+            make.center.equalToSuperview()
+        }
+        
+        let inhaleRow = createTextRow(labelText: "inhale", countLabelText: String(selectedPreset.inhale))
+        tableContainer.addArrangedSubview(inhaleRow)
+        inhaleRow.snp.makeConstraints { (make) in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(rowHeight)
+        }
+        
+        let holdRow = createTextRow(labelText: "hold", countLabelText: String(selectedPreset.firstHold))
+        tableContainer.addArrangedSubview(holdRow)
+        holdRow.snp.makeConstraints { (make) in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(rowHeight)
+        }
+
+        let exhaleRow = createTextRow(labelText: "exhale", countLabelText: String(selectedPreset.exhale))
+        tableContainer.addArrangedSubview(exhaleRow)
+        exhaleRow.snp.makeConstraints { (make) in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(rowHeight)
+        }
+        
+        let holdRow2 = createTextRow(labelText: "hold", countLabelText: String(selectedPreset.secondHold))
+        tableContainer.addArrangedSubview(holdRow2)
+        holdRow2.snp.makeConstraints { (make) in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(rowHeight)
+        }
+        
+        return containerView
+    }
+    
+    private func createTextRow(labelText: String, countLabelText: String) -> UIStackView {
+        let textRow = UIStackView()
+        textRow.distribution = .equalSpacing
+        
+        let label = UILabel()
+        label.text = labelText
+        label.textColor = R.color.white60()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        
+        let countLabel = UILabel()
+        countLabel.text = countLabelText
+        countLabel.textAlignment = .right
+        countLabel.textColor = R.color.white60()
+        countLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        
+        textRow.addArrangedSubview(label)
+        textRow.addArrangedSubview(countLabel)
+        
+        return textRow
+    }
+    
     @objc func didTapPreset() {
         let presetDetailsViewController = PresetDetailsViewController(style: .grouped)
         self.controller.show(presetDetailsViewController, sender: self)
