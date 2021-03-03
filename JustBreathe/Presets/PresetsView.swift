@@ -10,11 +10,13 @@ import UIKit
 class PresetsView: UIView {
     let controller: UIViewController
     let presetController: PresetController
+    let presetScrollView: UIScrollView
     
     init(controller: UIViewController, presetController: PresetController) {
         let scrollArea = UIView()
         self.controller = controller
         self.presetController = presetController
+        self.presetScrollView = UIScrollView()
 
         super.init(frame: CGRect.zero)
         
@@ -25,25 +27,24 @@ class PresetsView: UIView {
             make.centerY.equalToSuperview()
         }
         
-        let presetScrollview = UIScrollView()
-        presetScrollview.isPagingEnabled = true
-        presetScrollview.clipsToBounds = false
-        presetScrollview.showsHorizontalScrollIndicator = false
-        presetScrollview.showsVerticalScrollIndicator = false
-        scrollArea.addSubview(presetScrollview)
-        presetScrollview.snp.makeConstraints { (make) in
+        presetScrollView.isPagingEnabled = true
+        presetScrollView.clipsToBounds = false
+        presetScrollView.showsHorizontalScrollIndicator = false
+        presetScrollView.showsVerticalScrollIndicator = false
+        scrollArea.addSubview(presetScrollView)
+        presetScrollView.snp.makeConstraints { (make) in
             make.height.equalTo(323)
             make.width.equalTo(285)
             make.center.equalToSuperview()
         }
         
-        scrollArea.addGestureRecognizer(presetScrollview.panGestureRecognizer)
+        scrollArea.addGestureRecognizer(presetScrollView.panGestureRecognizer)
 
         let presetStackView = UIStackView()
         presetStackView.axis = .horizontal
         presetStackView.distribution = .equalSpacing
         presetStackView.spacing = 32
-        presetScrollview.addSubview(presetStackView)
+        presetScrollView.addSubview(presetStackView)
         presetStackView.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(-16)
@@ -197,7 +198,7 @@ class PresetsView: UIView {
     }
     
     @objc func didTapPreset() {
-        let presetDetailsViewController = PresetDetailsViewController(style: .grouped)
+        let presetDetailsViewController = PresetDetailsViewController()
         self.controller.show(presetDetailsViewController, sender: self)
     }
 

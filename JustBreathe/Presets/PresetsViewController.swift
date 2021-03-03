@@ -15,6 +15,7 @@ class PresetsViewController: UIViewController {
         setBackground()
         
         let presetsView = PresetsView(controller: self, presetController: self.presetController)
+        presetsView.presetScrollView.delegate = self
         view.addSubview(presetsView)
         
         presetsView.snp.makeConstraints{ make in
@@ -24,3 +25,12 @@ class PresetsViewController: UIViewController {
     }
 }
 
+// MARK: - UIScrollViewDelegate
+
+extension PresetsViewController: UIScrollViewDelegate {
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let selectedPageIndex = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+        self.presetController.selectedPresetIndex = selectedPageIndex
+    }
+}

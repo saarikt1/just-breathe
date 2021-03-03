@@ -16,7 +16,17 @@ class StartScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        layoutView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if startScreenView != nil && selectedPreset.id != presetController.selectedPreset.id {
+            startScreenView.removeFromSuperview()
+            layoutView()
+        }
+    }
+    
+    func layoutView() {
         setBackground()
         selectedPreset = presetController.selectedPreset
         selectedBreathCycleAmount = selectedPreset.defaultBreathingCycle
@@ -24,6 +34,8 @@ class StartScreenViewController: UIViewController {
         startScreenView.cyclesPicker.delegate = self
         startScreenView.cyclesPicker.dataSource = self
         startScreenView.breathCycleTextField.delegate = self
+        startScreenView.startButton.addTarget(self, action: #selector(didTapStartButton), for: .touchUpInside)
+        startScreenView.pickerDoneButton.action = #selector(didTapDoneButton)
         updateTotalTimeLabel()
         view.addSubview(startScreenView)
         
@@ -31,10 +43,6 @@ class StartScreenViewController: UIViewController {
             make.top.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview()
         }
-        
-        startScreenView.startButton.addTarget(self, action: #selector(didTapStartButton), for: .touchUpInside)
-        
-        startScreenView.pickerDoneButton.action = #selector(didTapDoneButton)
     }
     
     @objc func didTapStartButton() {

@@ -23,7 +23,7 @@ class StartScreenView: UIView {
         self.pickerDoneButton = UIBarButtonItem()
 
         super.init(frame: CGRect.zero)
-        
+
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fill

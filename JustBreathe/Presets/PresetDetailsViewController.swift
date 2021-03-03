@@ -9,7 +9,7 @@ import UIKit
 
 class PresetDetailsViewController: UITableViewController {
     let cellIdentifier = "cellTypeIdentifier"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
