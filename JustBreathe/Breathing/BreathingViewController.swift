@@ -30,6 +30,7 @@ class BreathingViewController: UIViewController {
         
         breathingLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         breathingLabel.textColor = R.color.white80()
+        breathingLabel.alpha = 0.0
 
         view.addSubview(breathingView)
         view.addSubview((breathingLabel))
@@ -45,39 +46,96 @@ class BreathingViewController: UIViewController {
     }
     
     func startAnimation(inhale: Int, firstHold: Int, exhale: Int, secondHold: Int, cycles: Int) {
-        let rotate = CGAffineTransform(rotationAngle: 3.0)
-        let rotateAndScaleUp = rotate.scaledBy(x: 1.5, y: 1.5)
-
+        animateLabel(inhale, firstHold, exhale, secondHold, cycles)
+        animateLogo(inhale, firstHold, exhale, secondHold, cycles)
+    }
+    
+    func animateLabel(_ inhale: Int, _ firstHold: Int, _ exhale: Int, _ secondHold: Int, _ cycles: Int) {
         if cycles < 1 {
             self.breathingLabel.alpha = 1.00
             self.breathingLabel.text = "Well done!"
             return
         }
-
-        UIView.animate(withDuration: TimeInterval(inhale), delay: 0, options: .curveEaseInOut, animations: {
+        
+        UIView.animate(withDuration: 0.25 * TimeInterval(inhale), delay: 0, options: .curveEaseInOut, animations: {
             self.breathingLabel.text = "Inhale"
-            self.breathingLabel.alpha = 0.0
-            self.breathingView.breatheLogo.transform = rotateAndScaleUp
+            self.breathingLabel.alpha = 1.0
         }) { _ in
-
-            UIView.animate(withDuration: TimeInterval(firstHold), delay: 0, options: .curveLinear, animations: {
-                self.breathingLabel.text = ""
-                self.breathingLabel.alpha = 1.00
+            
+            UIView.animate(withDuration: 0.25 * TimeInterval(inhale), delay: 0.5 * TimeInterval(inhale), options: .curveEaseInOut, animations: {
+                self.breathingLabel.alpha = 0.0
             }) { _ in
                 
-                UIView.animate(withDuration: TimeInterval(exhale), delay: 0, options: .curveEaseInOut, animations: {
-                    self.breathingLabel.text = "Exhale"
-                    self.breathingLabel.alpha = 0.0
-                    self.breathingView.breatheLogo.transform = .identity
+                UIView.animate(withDuration: 0.25 * TimeInterval(firstHold), delay: 0, options: .curveEaseInOut, animations: {
+                    if firstHold > 2 {
+                        self.breathingLabel.text = "Hold"
+                    } else {
+                        self.breathingLabel.text = ""
+                    }
+                    self.breathingLabel.alpha = 1.0
                 }) { _ in
                     
-                    UIView.animate(withDuration: TimeInterval(secondHold), delay: 0, options: .curveLinear, animations: {
-                        self.breathingLabel.text = ""
-                        self.breathingLabel.alpha = 1.00
+                    UIView.animate(withDuration: 0.25 * TimeInterval(firstHold), delay: 0.5 * TimeInterval(firstHold), options: .curveEaseInOut, animations: {
+                        self.breathingLabel.alpha = 0.0
                     }) { _ in
                         
-                        self.startAnimation(inhale: inhale, firstHold: firstHold, exhale: exhale, secondHold: secondHold, cycles: cycles-1)
+                        UIView.animate(withDuration: 0.25 * TimeInterval(exhale), delay: 0, options: .curveEaseInOut, animations: {
+                            self.breathingLabel.text = "Exhale"
+                            self.breathingLabel.alpha = 1.0
+                        }) { _ in
+                            
+                            UIView.animate(withDuration: 0.25 * TimeInterval(exhale), delay: 0.5 * TimeInterval(exhale), options: .curveEaseInOut, animations: {
+                                self.breathingLabel.alpha = 0.0
+                            }) { _ in
+                                
+                                UIView.animate(withDuration: 0.25 * TimeInterval(secondHold), delay: 0, options: .curveEaseInOut, animations: {
+                                    if secondHold > 2 {
+                                        self.breathingLabel.text = "Hold"
+                                    } else {
+                                        self.breathingLabel.text = ""
+                                    }
+                                    self.breathingLabel.alpha = 1.0
+                                }) { _ in
+                                    
+                                    UIView.animate(withDuration: 0.25 * TimeInterval(secondHold), delay: 0.5 * TimeInterval(secondHold), options: .curveEaseInOut, animations: {
+                                        self.breathingLabel.alpha = 0.0
+                                    }) { _ in
+                                        
+                                        
+                                        self.animateLabel(inhale, firstHold, exhale, secondHold, cycles-1)
+                                    }
+                                }
+                            }
+                        }
                     }
+                }
+            }
+        }
+    }
+    
+    func animateLogo(_ inhale: Int, _ firstHold: Int, _ exhale: Int, _ secondHold: Int, _ cycles: Int) {
+        let rotate = CGAffineTransform(rotationAngle: 3.0)
+        let rotateAndScaleUp = rotate.scaledBy(x: 1.5, y: 1.5)
+
+        if cycles < 1 {
+            return
+        }
+        
+        UIView.animate(withDuration: TimeInterval(inhale), delay: 0, options: .curveEaseInOut, animations: {
+            self.breathingView.breatheLogo.transform = rotateAndScaleUp
+        }) { _ in
+            
+            UIView.animate(withDuration: TimeInterval(exhale), delay: TimeInterval(firstHold), options: .curveEaseInOut, animations: {
+                self.breathingView.breatheLogo.transform = .identity
+            }) { _ in
+                
+                UIView.animate(withDuration: TimeInterval(secondHold), delay: 0, options: .curveEaseInOut, animations: {
+                    self.breathingView.breatheLogo.transform = CGAffineTransform(scaleX: 1.01, y: 1.01)
+                    self.breathingView.breatheLogo.transform = .identity
+                    
+                }) { _ in
+                    
+                    self.animateLogo(inhale, firstHold, exhale, secondHold, cycles-1)
                 }
             }
         }
