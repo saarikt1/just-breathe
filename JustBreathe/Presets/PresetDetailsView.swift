@@ -13,7 +13,7 @@ class PresetDetailsView: UITableView {
         setBackground()
         
         isScrollEnabled = false
-        rowHeight = 60
+        rowHeight = 48
         separatorColor = R.color.white70()
     }
 

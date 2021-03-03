@@ -198,7 +198,7 @@ class PresetsView: UIView {
     }
     
     @objc func didTapPreset() {
-        let presetDetailsViewController = PresetDetailsViewController()
+        let presetDetailsViewController = PresetDetailsViewController(presetController: self.presetController)
         self.controller.show(presetDetailsViewController, sender: self)
     }
 
