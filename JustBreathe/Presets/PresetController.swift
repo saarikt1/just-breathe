@@ -8,10 +8,11 @@
 import Foundation
 
 class PresetController {
+    
     var presetList = [
-        BreathingModel(name: "Calm", id: 0, inhale: 4, exhale: 6, secondHold: 3),
-        BreathingModel(name: "Energize", id: 1, inhale: 6, exhale: 2),
-        BreathingModel(name: "Sleep", id: 2, inhale: 4, firstHold: 7, exhale: 8)
+        BreathingModel(name: "Calm", 4, 0, 6, 0),
+        BreathingModel(name: "Energize", 6, 0, 2, 0),
+        BreathingModel(name: "Sleep", 4, 7, 8, 0)
     ]
 
     var selectedPresetIndex = 0

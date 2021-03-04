@@ -29,7 +29,6 @@ class StartScreenViewController: UIViewController {
     func layoutView() {
         setBackground()
         selectedPreset = presetController.selectedPreset
-        selectedBreathCycleAmount = selectedPreset.defaultBreathingCycle
         startScreenView = StartScreenView(selectedPreset: selectedPreset)
         startScreenView.cyclesPicker.delegate = self
         startScreenView.cyclesPicker.dataSource = self
@@ -46,7 +45,7 @@ class StartScreenViewController: UIViewController {
     }
     
     @objc func didTapStartButton() {
-        let breathingViewController = BreathingViewController(selectedPreset: selectedPreset, breathCycles: selectedBreathCycleAmount)
+        let breathingViewController = BreathingViewController(selectedPreset: selectedPreset, breathCycles: selectedPreset.selectedBreathCycleAmount)
         show(breathingViewController, sender: self)
     }
     
@@ -56,7 +55,7 @@ class StartScreenViewController: UIViewController {
     
     func updateTotalTimeLabel() {
         let secondsInOneCycle = selectedPreset.inhale + selectedPreset.firstHold + selectedPreset.exhale + selectedPreset.secondHold
-        let totalTimeInSeconds = secondsInOneCycle * selectedBreathCycleAmount
+        let totalTimeInSeconds = secondsInOneCycle * selectedPreset.selectedBreathCycleAmount
         startScreenView.totalTimeLabel.text = secondsToMinutesAndSeconds(seconds: totalTimeInSeconds)
     }
     
@@ -78,8 +77,8 @@ extension StartScreenViewController: UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedBreathCycleAmount = selectedPreset.breathingCycles[row]
-        startScreenView.breathCycleTextField.text = "\(selectedBreathCycleAmount!)"
+        selectedPreset.selectedBreathCycleAmount = selectedPreset.breathingCycles[row]
+        startScreenView.breathCycleTextField.text = "\(selectedPreset.selectedBreathCycleAmount)"
         updateTotalTimeLabel()
     }
 }
