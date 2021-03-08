@@ -50,7 +50,7 @@ class BreathingViewController: UIViewController {
         animateLogo(inhale, firstHold, exhale, secondHold, cycles)
     }
     
-    func animateLabel(_ inhale: Int, _ firstHold: Int, _ exhale: Int, _ secondHold: Int, _ cycles: Int) {
+    private func animateLabel(_ inhale: Int, _ firstHold: Int, _ exhale: Int, _ secondHold: Int, _ cycles: Int) {
         if cycles < 1 {
             self.breathingLabel.alpha = 1.00
             self.breathingLabel.text = "Well done!"
@@ -113,7 +113,7 @@ class BreathingViewController: UIViewController {
         }
     }
     
-    func animateLogo(_ inhale: Int, _ firstHold: Int, _ exhale: Int, _ secondHold: Int, _ cycles: Int) {
+    private func animateLogo(_ inhale: Int, _ firstHold: Int, _ exhale: Int, _ secondHold: Int, _ cycles: Int) {
         let rotate = CGAffineTransform(rotationAngle: 3.0)
         let rotateAndScaleUp = rotate.scaledBy(x: 1.5, y: 1.5)
 
