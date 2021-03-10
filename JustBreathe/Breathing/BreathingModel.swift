@@ -8,11 +8,11 @@
 import Foundation
 
 class BreathingModel {
-    let name: String
     let id: String
+    let name: String
+    var inhale, firstHold, exhale, secondHold, selectedBreathCycleAmount: Int
     let breathingCycles = [3, 5, 10, 20, 30, 50]
     let defaultBreathingCycleIndex = 2
-    var inhale, firstHold, exhale, secondHold, selectedBreathCycleAmount: Int
 
     init(name: String, _ inhale: Int, _ firstHold: Int, _ exhale: Int, _ secondHold: Int) {
         self.name = name

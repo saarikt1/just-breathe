@@ -23,22 +23,31 @@ class StartScreenView: UIView {
         self.pickerDoneButton = UIBarButtonItem()
 
         super.init(frame: CGRect.zero)
-
+        
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupViews() {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fill
-        addSubview(stackView)
-        stackView.snp.makeConstraints{ make in
-            make.edges.equalTo(self.snp.edges)
-        }
         
         let topView = createTopView()
         let middleView = createMiddleView()
         let bottomView = createBottomView()
-        
+
+        addSubview(stackView)
         stackView.addArrangedSubview(topView)
         stackView.addArrangedSubview(middleView)
         stackView.addArrangedSubview(bottomView)
+        
+        stackView.snp.makeConstraints{ make in
+            make.edges.equalTo(self.snp.edges)
+        }
         
         middleView.snp.makeConstraints { make in
             make.height.equalToSuperview().dividedBy(4.8)
@@ -48,14 +57,9 @@ class StartScreenView: UIView {
             make.height.equalToSuperview().dividedBy(2.7)
             make.bottom.equalTo(stackView.snp.bottom)
         }
-        
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func createTopView() -> UIView {
+    private func createTopView() -> UIView {
         let topView = UIView()
         let img = R.image.iconCalm()
         let calmImg = UIImageView(image: img)
@@ -82,7 +86,7 @@ class StartScreenView: UIView {
         return topView
     }
     
-    func createMiddleView() -> UIView {
+    private func createMiddleView() -> UIView {
         let middleView = UIView()
 
         let tableContainer = UIStackView()
@@ -96,28 +100,30 @@ class StartScreenView: UIView {
         }
         
         let inhaleRow = createTextRow(labelText: "inhale", countLabelText: String(selectedPreset.inhale))
+        let holdRow = createTextRow(labelText: "hold", countLabelText: String(selectedPreset.firstHold))
+        let exhaleRow = createTextRow(labelText: "exhale", countLabelText: String(selectedPreset.exhale))
+        let holdRow2 = createTextRow(labelText: "hold", countLabelText: String(selectedPreset.secondHold))
+        
         tableContainer.addArrangedSubview(inhaleRow)
+        tableContainer.addArrangedSubview(holdRow)
+        tableContainer.addArrangedSubview(exhaleRow)
+        tableContainer.addArrangedSubview(holdRow2)
+        
         inhaleRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
         
-        let holdRow = createTextRow(labelText: "hold", countLabelText: String(selectedPreset.firstHold))
-        tableContainer.addArrangedSubview(holdRow)
         holdRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
 
-        let exhaleRow = createTextRow(labelText: "exhale", countLabelText: String(selectedPreset.exhale))
-        tableContainer.addArrangedSubview(exhaleRow)
         exhaleRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
         
-        let holdRow2 = createTextRow(labelText: "hold", countLabelText: String(selectedPreset.secondHold))
-        tableContainer.addArrangedSubview(holdRow2)
         holdRow2.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
@@ -126,7 +132,7 @@ class StartScreenView: UIView {
         return middleView
     }
     
-    func createTextRow(labelText: String, countLabelText: String) -> UIStackView {
+    private func createTextRow(labelText: String, countLabelText: String) -> UIStackView {
         let textRow = UIStackView()
         textRow.distribution = .equalSpacing
         
@@ -147,28 +153,17 @@ class StartScreenView: UIView {
         return textRow
     }
     
-    func createBottomView() -> UIView {
+    private func createBottomView() -> UIView {
         let bottomView = UIView()
 
-        let repetitionRowView = UIStackView()
-        repetitionRowView.distribution = .equalSpacing
-        repetitionRowView.alignment = .center
-        bottomView.addSubview(repetitionRowView)
-        repetitionRowView.snp.makeConstraints { (make) in
-            make.top.equalTo(bottomView.snp.top).offset(20)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(96)
-            make.height.equalTo(35)
-        }
+        let breathCyclesRow = UIStackView()
+        breathCyclesRow.distribution = .equalSpacing
+        breathCyclesRow.alignment = .center
         
         let img = R.image.iconRepeat()
         let repeatIcon = UIImageView(image: img)
         repeatIcon.contentMode = .center
-        repetitionRowView.addArrangedSubview(repeatIcon)
-        repeatIcon.snp.makeConstraints { (make) in
-            make.width.height.equalTo(32)
-        }
-        
+
         breathCycleTextField.text = "\(selectedPreset.selectedBreathCycleAmount)"
         breathCycleTextField.textColor = .white
         breathCycleTextField.textAlignment = .center
@@ -176,24 +171,41 @@ class StartScreenView: UIView {
         breathCycleTextField.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         breathCycleTextField.layer.cornerRadius = 8
         breathCycleTextField.layer.masksToBounds = true
-        repetitionRowView.addArrangedSubview(breathCycleTextField)
-        breathCycleTextField.snp.makeConstraints { (make) in
-            make.width.equalTo(48)
-            make.height.equalTo(35)
-        }
-
+        
         totalTimeLabel = UILabel()
         totalTimeLabel.text = ""
         totalTimeLabel.textColor = R.color.white60()
         totalTimeLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+
+        startButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        
+        bottomView.addSubview(breathCyclesRow)
         bottomView.addSubview(totalTimeLabel)
-        totalTimeLabel.snp.makeConstraints { (make) in
+        bottomView.addSubview(startButton)
+        breathCyclesRow.addArrangedSubview(repeatIcon)
+        breathCyclesRow.addArrangedSubview(breathCycleTextField)
+        
+        breathCyclesRow.snp.makeConstraints { (make) in
+            make.top.equalTo(bottomView.snp.top).offset(20)
             make.centerX.equalToSuperview()
-            make.top.equalTo(repetitionRowView.snp.bottom).offset(16)
+            make.width.equalTo(96)
+            make.height.equalTo(35)
         }
         
-        startButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        bottomView.addSubview(startButton)
+        repeatIcon.snp.makeConstraints { (make) in
+            make.width.height.equalTo(32)
+        }
+        
+        breathCycleTextField.snp.makeConstraints { (make) in
+            make.width.equalTo(48)
+            make.height.equalTo(35)
+        }
+        
+        totalTimeLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(breathCyclesRow.snp.bottom).offset(16)
+        }
+        
         startButton.snp.makeConstraints { (make) in
             make.height.equalTo(44)
             make.width.equalTo(120)
