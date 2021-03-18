@@ -9,21 +9,41 @@ import UIKit
 
 class StartScreenView: UIView {
     
+    var presetName: UILabel = {
+        let label = UILabel()
+        label.textColor = R.color.white80()
+        label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        return label
+    }()
+
+    var presetIcon: UIImageView = {
+        let imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFit
+        return imgView
+    }()
+
+    var inhaleCount = BreathCountLabel()
+    var firstHoldCount = BreathCountLabel()
+    var exhaleCount = BreathCountLabel()
+    var secondHoldCount = BreathCountLabel()
+    var breathCycleTextField = PickerViewTextField()
+    var totalTimeLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = R.color.white60()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        return label
+    }()
+
     let startButton = UIButton(label: "Start")
-    var selectedPreset: BreathingModel
-    var pickerDoneButton: UIBarButtonItem
-    let breathCycleTextField: PickerViewTextField
-    var cyclesPicker: UIPickerView
-    var totalTimeLabel: UILabel!
+    var pickerDoneButton = UIBarButtonItem()
+    var cyclesPicker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.backgroundColor = .white
+        return picker
+    }()
 
-    init(selectedPreset: BreathingModel) {
-        self.selectedPreset = selectedPreset
-        self.cyclesPicker = UIPickerView()
-        self.breathCycleTextField = PickerViewTextField()
-        self.pickerDoneButton = UIBarButtonItem()
-
+    init() {
         super.init(frame: CGRect.zero)
-        
         setupViews()
     }
     
@@ -59,62 +79,59 @@ class StartScreenView: UIView {
         }
     }
     
+    // MARK: - TopView
+    
     private func createTopView() -> UIView {
         let topView = UIView()
-        let img = R.image.iconCalm()
-        let calmImg = UIImageView(image: img)
-        calmImg.contentMode = .scaleAspectFit
 
-        let title = UILabel()
-        title.text = selectedPreset.name
-        title.textColor = R.color.white80()
-        title.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
-        
-        topView.addSubview(title)
-        topView.addSubview(calmImg)
+        topView.addSubview(presetIcon)
+        topView.addSubview(presetName)
 
-        title.snp.makeConstraints { make in
+        presetName.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalTo(topView.snp.bottom)
         }
         
-        calmImg.snp.makeConstraints { make in
+        presetIcon.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(title.snp.top).offset(-35)
+            make.bottom.equalTo(presetName.snp.top).offset(-35)
         }
         
         return topView
     }
     
+    // MARK: - MiddleView
+    
     private func createMiddleView() -> UIView {
         let middleView = UIView()
 
-        let tableContainer = UIStackView()
-        tableContainer.axis = .vertical
-        tableContainer.distribution = .equalSpacing
-        middleView.addSubview(tableContainer)
-        tableContainer.snp.makeConstraints { (make) in
+        let breathCountStackView = UIStackView()
+        breathCountStackView.axis = .vertical
+        breathCountStackView.distribution = .equalSpacing
+        
+        let inhaleRow = createTextRow("inhale", inhaleCount)
+        let firstHoldRow = createTextRow("hold", firstHoldCount)
+        let exhaleRow = createTextRow("exhale", exhaleCount)
+        let secondHoldRow = createTextRow("hold", secondHoldCount)
+        
+        middleView.addSubview(breathCountStackView)
+        breathCountStackView.addArrangedSubview(inhaleRow)
+        breathCountStackView.addArrangedSubview(firstHoldRow)
+        breathCountStackView.addArrangedSubview(exhaleRow)
+        breathCountStackView.addArrangedSubview(secondHoldRow)
+        
+        breathCountStackView.snp.makeConstraints { (make) in
             make.width.equalTo(110)
             make.height.equalTo(108)
             make.center.equalToSuperview()
         }
-        
-        let inhaleRow = createTextRow(labelText: "inhale", countLabelText: String(selectedPreset.inhale))
-        let holdRow = createTextRow(labelText: "hold", countLabelText: String(selectedPreset.firstHold))
-        let exhaleRow = createTextRow(labelText: "exhale", countLabelText: String(selectedPreset.exhale))
-        let holdRow2 = createTextRow(labelText: "hold", countLabelText: String(selectedPreset.secondHold))
-        
-        tableContainer.addArrangedSubview(inhaleRow)
-        tableContainer.addArrangedSubview(holdRow)
-        tableContainer.addArrangedSubview(exhaleRow)
-        tableContainer.addArrangedSubview(holdRow2)
         
         inhaleRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
         
-        holdRow.snp.makeConstraints { (make) in
+        firstHoldRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
@@ -123,8 +140,8 @@ class StartScreenView: UIView {
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
-        
-        holdRow2.snp.makeConstraints { (make) in
+
+        secondHoldRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(20)
         }
@@ -132,26 +149,22 @@ class StartScreenView: UIView {
         return middleView
     }
     
-    private func createTextRow(labelText: String, countLabelText: String) -> UIStackView {
+    private func createTextRow(_ breathPhaseDescription: String, _ countLabel: UILabel) -> UIStackView {
         let textRow = UIStackView()
         textRow.distribution = .equalSpacing
         
-        let label = UILabel()
-        label.text = labelText
-        label.textColor = R.color.white60()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        
-        let countLabel = UILabel()
-        countLabel.text = countLabelText
-        countLabel.textAlignment = .right
-        countLabel.textColor = R.color.white60()
-        countLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        
-        textRow.addArrangedSubview(label)
+        let descriptionLabel = UILabel()
+        descriptionLabel.text = breathPhaseDescription
+        descriptionLabel.textColor = R.color.white60()
+        descriptionLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+
+        textRow.addArrangedSubview(descriptionLabel)
         textRow.addArrangedSubview(countLabel)
         
         return textRow
     }
+    
+    // MARK: - BottomView
     
     private func createBottomView() -> UIView {
         let bottomView = UIView()
@@ -163,21 +176,9 @@ class StartScreenView: UIView {
         let img = R.image.iconRepeat()
         let repeatIcon = UIImageView(image: img)
         repeatIcon.contentMode = .center
-
-        breathCycleTextField.text = "\(selectedPreset.selectedBreathCycleAmount)"
-        breathCycleTextField.textColor = .white
-        breathCycleTextField.textAlignment = .center
-        breathCycleTextField.backgroundColor = R.color.white30()
-        breathCycleTextField.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        breathCycleTextField.layer.cornerRadius = 8
-        breathCycleTextField.layer.masksToBounds = true
-        
-        totalTimeLabel = UILabel()
-        totalTimeLabel.text = ""
-        totalTimeLabel.textColor = R.color.white60()
-        totalTimeLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-
         startButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        
+        createPicker()
         
         bottomView.addSubview(breathCyclesRow)
         bottomView.addSubview(totalTimeLabel)
@@ -216,22 +217,18 @@ class StartScreenView: UIView {
         return bottomView
     }
     
-
-    func showPickerView(_ textField: UITextField) {
-        cyclesPicker.backgroundColor = .white
-        breathCycleTextField.inputView = cyclesPicker
-        cyclesPicker.selectRow(selectedPreset.selectedBreathCycleIndex, inComponent: 0, animated: false)
-
+    private func createPicker() {
         let pickerToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 100, height: 0))
         pickerToolBar.tintColor = .black
         pickerToolBar.sizeToFit()
         
         pickerDoneButton.style = .done
         pickerDoneButton.title = "Done"
-
+        
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         pickerToolBar.setItems([spaceButton, pickerDoneButton], animated: false)
         pickerToolBar.isUserInteractionEnabled = true
+        
         breathCycleTextField.inputAccessoryView = pickerToolBar
     }
 }

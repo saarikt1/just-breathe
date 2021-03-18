@@ -1,63 +1,85 @@
 //
-//  PresetsView.swift
+//  PresetsViewController.swift
 //  JustBreathe
 //
-//  Created by Tommi Saarikangas on 1.2.2021.
+//  Created by Tommi Saarikangas on 28.1.2021.
 //
 
 import UIKit
 
-class PresetsView: UIView {
-    let controller: UIViewController
-    let presetController: PresetController
-    let presetScrollView: UIScrollView
+class PresetsViewController: UIViewController {
+    private let viewModel: PresetViewModel
     
-    init(controller: UIViewController, presetController: PresetController) {
-        let scrollArea = UIView()
-        self.controller = controller
-        self.presetController = presetController
-        self.presetScrollView = UIScrollView()
-
-        super.init(frame: CGRect.zero)
+    init(_ presetViewModel: PresetViewModel) {
+        self.viewModel = presetViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setBackground()
         
-        addSubview(scrollArea)
-        scrollArea.snp.makeConstraints { (make) in
+        let scrollablePresetView = newScrollablePresetView()
+        let presetAddButton = newPresetAddButton()
+
+        view.addSubview(scrollablePresetView)
+        view.addSubview(presetAddButton)
+        
+        scrollablePresetView.snp.makeConstraints { (make) in
             make.height.equalTo(323)
             make.leading.trailing.equalToSuperview()
             make.centerY.equalToSuperview()
         }
         
+        presetAddButton.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.width.equalTo(152)
+            make.height.equalTo(44)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-50)
+        }
+    }
+    
+    private func newScrollablePresetView() -> UIView {
+        let scrollableArea = UIView()
+
+        let presetScrollView = UIScrollView()
         presetScrollView.isPagingEnabled = true
         presetScrollView.clipsToBounds = false
         presetScrollView.showsHorizontalScrollIndicator = false
         presetScrollView.showsVerticalScrollIndicator = false
-        scrollArea.addSubview(presetScrollView)
+        presetScrollView.delegate = self
+        scrollableArea.addGestureRecognizer(presetScrollView.panGestureRecognizer)
+
+        let presetStackView = UIStackView()
+        presetStackView.axis = .horizontal
+        presetStackView.distribution = .equalSpacing
+        presetStackView.spacing = 32
+        
+        let placeholderViewBeginning = UIView()
+        let placeholderViewEnd = UIView()
+        
+        scrollableArea.addSubview(presetScrollView)
+        presetScrollView.addSubview(presetStackView)
+        presetStackView.addArrangedSubview(placeholderViewBeginning)
+        
         presetScrollView.snp.makeConstraints { (make) in
             make.height.equalTo(323)
             make.width.equalTo(285)
             make.center.equalToSuperview()
         }
         
-        scrollArea.addGestureRecognizer(presetScrollView.panGestureRecognizer)
-
-        let presetStackView = UIStackView()
-        presetStackView.axis = .horizontal
-        presetStackView.distribution = .equalSpacing
-        presetStackView.spacing = 32
-        presetScrollView.addSubview(presetStackView)
         presetStackView.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(-16)
             make.trailing.equalToSuperview().inset(16)
             make.height.equalToSuperview()
         }
-        
-        let placeholderViewBeginning = UIView()
 
-        let placeholderViewEnd = UIView()
-        presetStackView.addArrangedSubview(placeholderViewBeginning)
-
-        for preset in presetController.presetList {
+        for preset in viewModel.presets {
             let presetView = UIView()
             presetView.backgroundColor = R.color.white20()
             presetView.layer.cornerRadius = 16
@@ -65,7 +87,7 @@ class PresetsView: UIView {
             let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapPreset))
             gesture.numberOfTapsRequired = 1
             presetView.addGestureRecognizer(gesture)
-            
+
             let img = R.image.iconCalm()
             let presetIcon = UIImageView(image: img)
             presetIcon.contentMode = .scaleAspectFit
@@ -74,13 +96,13 @@ class PresetsView: UIView {
             nameLabel.text = preset.name
             nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
             nameLabel.textColor = R.color.white80()
-            
+
             let breathCountView = createBreathCountView(for: preset)
 
             presetView.addSubview(presetIcon)
             presetView.addSubview(nameLabel)
             presetView.addSubview(breathCountView)
-            
+
             presetIcon.snp.makeConstraints { (make) in
                 make.height.equalTo(100)
                 make.centerX.equalToSuperview()
@@ -89,24 +111,24 @@ class PresetsView: UIView {
             nameLabel.snp.makeConstraints { (make) in
                 make.center.equalToSuperview()
             }
-            
+
             breathCountView.snp.makeConstraints { (make) in
                 make.centerX.equalToSuperview()
                 make.width.equalTo(100)
                 make.height.equalTo(100)
                 make.bottom.equalTo(presetView.snp.bottom).offset(-32)
             }
-            
+
             presetStackView.addArrangedSubview(presetView)
-            
+
             presetView.snp.makeConstraints { (make) in
                 make.width.equalTo(253)
                 make.height.equalTo(323)
             }
         }
-        
+
         presetStackView.addArrangedSubview(placeholderViewEnd)
-        
+
         placeholderViewBeginning.snp.makeConstraints { (make) in
             make.width.equalTo(0)
             make.height.equalTo(323)
@@ -117,21 +139,10 @@ class PresetsView: UIView {
             make.height.equalTo(323)
         }
         
-        let addPresetButton = UIButton(label: "Add Preset")
-        addPresetButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        addPresetButton.setImage(UIImage.plusSymbol, for: .normal)
-        addPresetButton.imageView?.contentMode = .scaleAspectFit
-        addPresetButton.imageEdgeInsets = UIEdgeInsets(top: 16, left: -2, bottom: 16, right: 2)
-        addSubview(addPresetButton)
-        addPresetButton.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.width.equalTo(152)
-            make.height.equalTo(44)
-            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-50)
-        }
+        return scrollableArea
     }
     
-    private func createBreathCountView(for selectedPreset: BreathingModel) -> UIView {
+    private func createBreathCountView(for preset: Preset) -> UIView {
         let containerView = UIView()
         let rowHeight = 17
 
@@ -144,65 +155,91 @@ class PresetsView: UIView {
             make.height.equalToSuperview()
             make.center.equalToSuperview()
         }
+
+        let inhaleLabel = BreathCountLabel()
+        inhaleLabel.text = "\(preset.breathCounts.inhale)"
         
-        let inhaleRow = createTextRow(labelText: "inhale", countLabelText: String(selectedPreset.inhale))
+        let inhaleRow = createTextRow(labelText: "inhale", inhaleLabel)
         tableContainer.addArrangedSubview(inhaleRow)
         inhaleRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(rowHeight)
         }
+
+        let firstHoldLabel = BreathCountLabel()
+        firstHoldLabel.text = "\(preset.breathCounts.firstHold)"
         
-        let holdRow = createTextRow(labelText: "hold", countLabelText: String(selectedPreset.firstHold))
+        let holdRow = createTextRow(labelText: "hold", firstHoldLabel)
         tableContainer.addArrangedSubview(holdRow)
         holdRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(rowHeight)
         }
 
-        let exhaleRow = createTextRow(labelText: "exhale", countLabelText: String(selectedPreset.exhale))
+        let exhaleLabel = BreathCountLabel()
+        exhaleLabel.text = "\(preset.breathCounts.exhale)"
+        
+        let exhaleRow = createTextRow(labelText: "exhale", exhaleLabel)
         tableContainer.addArrangedSubview(exhaleRow)
         exhaleRow.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(rowHeight)
         }
+
+        let secondHoldLabel = BreathCountLabel()
+        secondHoldLabel.text = "\(preset.breathCounts.secondHold)"
         
-        let holdRow2 = createTextRow(labelText: "hold", countLabelText: String(selectedPreset.secondHold))
+        let holdRow2 = createTextRow(labelText: "hold", secondHoldLabel)
         tableContainer.addArrangedSubview(holdRow2)
         holdRow2.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(rowHeight)
         }
-        
+
         return containerView
     }
-    
-    private func createTextRow(labelText: String, countLabelText: String) -> UIStackView {
+
+    private func createTextRow(labelText: String, _ countLabel: UILabel) -> UIStackView {
         let textRow = UIStackView()
         textRow.distribution = .equalSpacing
-        
+
         let label = UILabel()
         label.text = labelText
         label.textColor = R.color.white60()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        
-        let countLabel = UILabel()
-        countLabel.text = countLabelText
+
         countLabel.textAlignment = .right
         countLabel.textColor = R.color.white60()
         countLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        
+
         textRow.addArrangedSubview(label)
         textRow.addArrangedSubview(countLabel)
-        
+
         return textRow
     }
     
-    @objc func didTapPreset() {
-        let presetDetailsViewController = PresetDetailsViewController(presetController: self.presetController)
-        self.controller.show(presetDetailsViewController, sender: self)
+    private func newPresetAddButton() -> UIButton {
+        let button = UIButton(label: "Add Preset")
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        button.setImage(UIImage.plusSymbol, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageEdgeInsets = UIEdgeInsets(top: 16, left: -2, bottom: 16, right: 2)
+        return button
     }
+    
+    @objc func didTapPreset() {
+        let presetDetailsViewController = PresetDetailsViewController(with: viewModel)
+        show(presetDetailsViewController, sender: self)
+    }
+}
+    
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+// MARK: - UIScrollViewDelegate
+
+extension PresetsViewController: UIScrollViewDelegate {
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let selectedPageIndex = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+        viewModel.updateSelectedPreset(to: selectedPageIndex)
     }
 }

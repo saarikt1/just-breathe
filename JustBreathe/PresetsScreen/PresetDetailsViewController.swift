@@ -9,18 +9,13 @@ import UIKit
 
 class PresetDetailsViewController: UITableViewController {
     let cellIdentifier = "cellTypeIdentifier"
-    let presetController: PresetController!
     let breathDescriptions = ["Inhale", "Hold", "Exhale", "Hold"]
     let breathCounts: [Int]
+    let viewModel: PresetViewModel
     
-    init(presetController: PresetController) {
-        self.presetController = presetController
-        breathCounts = [
-            presetController.selectedPreset.inhale,
-            presetController.selectedPreset.firstHold,
-            presetController.selectedPreset.exhale,
-            presetController.selectedPreset.secondHold
-        ]
+    init(with viewModel: PresetViewModel) {
+        self.viewModel = viewModel
+        breathCounts = [viewModel.presetInhaleCount, viewModel.presetFirstHoldCount, viewModel.presetExhaleCount, viewModel.presetSecondHoldCount]
         super.init(style: .grouped)
     }
     
@@ -28,11 +23,19 @@ class PresetDetailsViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView = PresetDetailsView(frame: CGRect.zero, style: .grouped)
-        title = "\(presetController.selectedPreset.name)"
+        title = viewModel.presetName
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.snp.makeConstraints { (make) in
         }

@@ -9,56 +9,73 @@ import UIKit
 import SnapKit
 
 class StartScreenViewController: UIViewController {
-    var presetController: PresetController!
-    var startScreenView: StartScreenView!
-    var selectedPreset: BreathingModel!
-    var selectedBreathCycleAmount: Int!
-
+    private let viewModel: PresetViewModel
+    private let startScreenView: StartScreenView
+    private let breathingCycleOptions = [5, 10, 20, 30, 50]
+    private var selectedBreathCycleIndex = 1
+    
+    init(_ startScreenViewModel: PresetViewModel) {
+        self.viewModel = startScreenViewModel
+        self.startScreenView = StartScreenView()
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if startScreenView != nil && selectedPreset.id != presetController.selectedPreset.id {
-            startScreenView.removeFromSuperview()
-            layoutView()
-        }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.viewDidAppear()
+        layoutView()
     }
     
     func layoutView() {
         setBackground()
-        selectedPreset = presetController.selectedPreset
-        startScreenView = StartScreenView(selectedPreset: selectedPreset)
+        view.addSubview(startScreenView)
+        startScreenView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        startScreenView.presetName.text = viewModel.presetName
+        startScreenView.presetIcon.image = R.image.iconCalm()
+        startScreenView.inhaleCount.text = "\(viewModel.presetInhaleCount)"
+        startScreenView.firstHoldCount.text = "\(viewModel.presetFirstHoldCount)"
+        startScreenView.exhaleCount.text = "\(viewModel.presetExhaleCount)"
+        startScreenView.secondHoldCount.text = "\(viewModel.presetSecondHoldCount)"
+
+        startScreenView.startButton.addTarget(self, action: #selector(didTapStartButton), for: .touchUpInside)
+        
         startScreenView.cyclesPicker.delegate = self
         startScreenView.cyclesPicker.dataSource = self
+        startScreenView.breathCycleTextField.inputView = startScreenView.cyclesPicker
         startScreenView.breathCycleTextField.delegate = self
-        startScreenView.startButton.addTarget(self, action: #selector(didTapStartButton), for: .touchUpInside)
         startScreenView.pickerDoneButton.action = #selector(didTapDoneButton)
-        updateTotalTimeLabel()
-        view.addSubview(startScreenView)
         
-        startScreenView.snp.makeConstraints{ make in
-            make.top.bottom.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-        }
+        startScreenView.breathCycleTextField.text = "\(breathingCycleOptions[selectedBreathCycleIndex])"
+        updateTotalTimeLabel()
     }
     
     @objc func didTapStartButton() {
-        let breathingViewController = BreathingViewController(selectedPreset: selectedPreset, breathCycles: selectedPreset.selectedBreathCycleAmount)
+        let breathingViewController = BreathingViewController(viewModel, breathCycles: breathingCycleOptions[selectedBreathCycleIndex])
         show(breathingViewController, sender: self)
     }
-    
+
     @objc func didTapDoneButton() {
         startScreenView.breathCycleTextField.resignFirstResponder()
     }
-    
+
     func updateTotalTimeLabel() {
-        let secondsInOneCycle = selectedPreset.inhale + selectedPreset.firstHold + selectedPreset.exhale + selectedPreset.secondHold
-        let totalTimeInSeconds = secondsInOneCycle * selectedPreset.selectedBreathCycleAmount
+        let secondsInOneCycle = viewModel.presetInhaleCount + viewModel.presetFirstHoldCount + viewModel.presetExhaleCount + viewModel.presetSecondHoldCount
+        let totalTimeInSeconds = secondsInOneCycle * breathingCycleOptions[selectedBreathCycleIndex]
         startScreenView.totalTimeLabel.text = secondsToMinutesAndSeconds(seconds: totalTimeInSeconds)
     }
-    
+
     private func secondsToMinutesAndSeconds (seconds: Int) -> String {
         let m = seconds / 60
         let s = seconds % 60
@@ -71,14 +88,14 @@ class StartScreenViewController: UIViewController {
 // MARK: - UIPickerViewDelegate
 
 extension StartScreenViewController: UIPickerViewDelegate {
-    
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(selectedPreset.breathingCycles[row])"
+        return "\(breathingCycleOptions[row])"
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedPreset.selectedBreathCycleAmount = selectedPreset.breathingCycles[row]
-        startScreenView.breathCycleTextField.text = "\(selectedPreset.selectedBreathCycleAmount)"
+        selectedBreathCycleIndex = row
+        startScreenView.breathCycleTextField.text = "\(breathingCycleOptions[selectedBreathCycleIndex])"
         updateTotalTimeLabel()
     }
 }
@@ -86,22 +103,22 @@ extension StartScreenViewController: UIPickerViewDelegate {
 // MARK: - UIPickerViewDataSource
 
 extension StartScreenViewController: UIPickerViewDataSource {
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return selectedPreset.breathingCycles.count
+        return breathingCycleOptions.count
     }
 }
 
 // MARK: - UITextFieldDelegate
 
 extension StartScreenViewController: UITextFieldDelegate {
-    
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        startScreenView.showPickerView(startScreenView.breathCycleTextField)
+        startScreenView.cyclesPicker.selectRow(selectedBreathCycleIndex, inComponent: 0, animated: false)
         return true
     }
 }

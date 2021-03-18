@@ -8,10 +8,22 @@
 import UIKit
 
 class RootViewController: UITabBarController {
-    var presetController = PresetController()
+    let presetService: PresetService
+    let presetViewModel: PresetViewModel
+
+    init() {
+        self.presetService = PresetService()
+        self.presetViewModel = PresetViewModel(presetService: presetService)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presetService.loadPresets()
         setTabBarStyles()
         setupVCs()
     }
@@ -32,29 +44,23 @@ class RootViewController: UITabBarController {
     }
     
     func setupVCs() {
-        let startScreenViewController = StartScreenViewController()
-        startScreenViewController.presetController = self.presetController
-        
+        let startScreenViewController = StartScreenViewController(presetViewModel)
+
         let startScreenVC = createTabVC(vc: startScreenViewController,
                                         selectedIcon: UIImage.menuiconStartScreenSelected,
                                         unSelectedIcon: UIImage.menuiconStartScreenUnSelected)
         
-       let presetViewController = PresetsViewController()
-        presetViewController.presetController = self.presetController
+        let presetViewController = PresetsViewController(presetViewModel)
 
         let presetsVC = createTabVC(vc: presetViewController,
                                     selectedIcon: UIImage.menuiconPresetsSelected,
                                     unSelectedIcon: UIImage.menuiconPresetsUnselected)
 
-        let logVC = createTabVC(vc: LogViewController(),
-                                selectedIcon: UIImage.menuiconLogSelected,
-                                unSelectedIcon: UIImage.menuiconLogUnselected)
-        
         let settingsVC = createTabVC(vc: SettingsViewController(),
                                      selectedIcon: UIImage.menuiconSettingsSelected,
                                      unSelectedIcon: UIImage.menuiconSettingsUnselected)
         
-        setViewControllers([startScreenVC, presetsVC, logVC, settingsVC], animated: false)
+        setViewControllers([startScreenVC, presetsVC, settingsVC], animated: false)
     }
     
     func createTabVC(vc: UIViewController, selectedIcon: UIImage?, unSelectedIcon: UIImage?) -> UINavigationController {

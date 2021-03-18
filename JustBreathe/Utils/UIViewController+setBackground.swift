@@ -16,6 +16,9 @@ extension UIViewController {
         imageView.image = background
         imageView.center = view.center
         view.insertSubview(imageView, at: 0)
+        imageView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
 }
 
